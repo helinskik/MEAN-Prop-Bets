@@ -1,0 +1,18 @@
+<nav>
+    <mat-toolbar color="primary" style="height: auto;">
+        <a href="/">
+            <span>
+                <img src="" alt="" title="" class="globo-logo">
+            </span>
+        </a>
+        <span class="navbar-fill">
+            <div *ngIf="isLoggedIn" style="padding: 10px; width: 100%;">{{user?.profile.nickname}}</div>
+            <button *ngIf="isLoggedIn" mat-button routerLink="/projects">My Bets</button>
+            <button *ngIf="!isLoggedIn" mat-button (click)="login()">Login</button>
+            <button *ngIf="isLoggedIn" mat-button (click)="logout()">Logout</button>
+        </span>
+    </mat-toolbar>
+</nav>
+<div>
+<router-outlet></router-outlet>
+</div>

@@ -1,0 +1,47 @@
+
+<mat-dialog-content>
+    <h1 mat-dialog-title class="d-flex justify-content-center">Create Entry</h1>
+    
+    <form class="form-horizontal" [formGroup]="form" (submit)="submit()">
+        <input type="hidden" name="_csrf" value="{{csrfToken}}">
+        <h2 mat-dialog-title style="padding-top: 25px;">Event</h2>
+        <p>Pick the event you want to place bets on.</p>
+        <mat-form-field style="margin-right: 20px;">
+            <mat-label>Event</mat-label>
+            <mat-select [(ngModel)]="selectedEvent" name="event" id="event" #event formControlName="event" [ngClass]="displayFieldCss('event')" (selectionChange)="selecteEvent($event)"> 
+                <mat-option *ngFor="let event of events" [value]="event">
+                    {{event.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <h2 mat-dialog-title style="padding-top: 25px;">Group</h2>
+        <p>Select the group of people you are playing with or create a new one.</p>
+        <mat-form-field style="margin-right: 20px;">
+            <mat-label>Group</mat-label>
+            <mat-select [(ngModel)]="selectedGame" name="game" id="game" #game formControlName="game" [ngClass]="displayFieldCss('game')" (selectionChange)="selecteGame($event)"> 
+                <mat-option *ngFor="let game of games" [value]="game">
+                    {{game.name}}
+                </mat-option>
+                <mat-option value="new">
+                    Create New Group
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field *ngIf="gameText == 'Create New Group'">
+            <input matInput placeholder="Group Name" formControlName="group" formControlName="group" [ngClass]="displayFieldCss('game')">
+        </mat-form-field>
+
+        <h2 mat-dialog-title style="padding-top: 25px;">Name</h2>
+        <p>Enter your name for the entry.</p>
+        <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name" formControlName="name" [ngClass]="displayFieldCss('name')">
+        </mat-form-field>
+
+        <mat-dialog-actions class="d-flex justify-content-center">
+            <button type="submit" mat-raised-button color="primary">Enter</button>
+            <button mat-raised-button color="secondary" (click)="close()">Close</button>
+        </mat-dialog-actions>
+    </form>
+</mat-dialog-content>

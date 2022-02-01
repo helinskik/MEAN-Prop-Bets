@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <h1 class="d-flex justify-content-center mat-display-2" style="margin: 25px 0 5px;">{{event?.name}}</h1>
+    <h3 class="d-flex justify-content-center mat-display-1" style="margin: 0px 0 25px;">Prop Bets</h3>
+    <h4 class="d-flex justify-content-center">Betting closes at: {{eventDate  | date :'short'}}</h4>
+    <div *ngIf="newBet" class="navbar-header d-flex justify-content-center">
+        <p>Group: {{gameName}}</p>
+        <div style="width: 100px;"></div>
+        <p>Name: {{playerName}}</p>
+    </div>
+  
+    <hr class="header-line">
+
+    <div class="row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center">
+        <ng-container *ngFor="let section of sections">
+
+            <div class="col-12 m-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center">{{ section.name }}</div>
+
+            <ng-container *ngFor="let bet of section.bets; let col = index">
+                    <div [ngClass]="col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'">
+                        {{ bet.q }}
+                    </div>
+                    <div [ngClass]="col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'">
+                        <mat-radio-group name="{{ bet.id }}" (change)="radioChange($event)">
+                            <mat-radio-button style="float: left;" value="{{ bet.a1 }}">{{ bet.a1 }}</mat-radio-button>
+                            <mat-radio-button style="float: right;" value="{{ bet.a2 }}">{{ bet.a2 }}</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+            </ng-container>
+
+        </ng-container>
+        
+    </div>
+
+    <mat-dialog-actions class="mt-4 d-flex justify-content-center">
+        <button *ngIf="newBet" mat-raised-button color="primary" (click)="submit()" [disabled]="isDisabled">Submit</button>
+        <button *ngIf="!newBet" mat-raised-button color="primary" (click)="makeBet()">Make Bets</button>
+        <button mat-raised-button color="secondary" (click)="seeEntries()">See Entries</button>
+    </mat-dialog-actions>
+</div>

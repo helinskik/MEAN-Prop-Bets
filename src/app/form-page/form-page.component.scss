@@ -1,0 +1,63 @@
+.header-line {
+    border: none;
+    height: 1px;
+    color: #333;
+    background-color: #333;
+}
+.line {
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 8px auto;
+    height: 0;
+    width: 100%;
+    max-height: 0;
+    font-size: 1px;
+    line-height: 0;
+    clear: both;
+    border: none;
+    border-top: 1px solid #aaaaaa;
+    border-bottom: 1px solid #ffffff;
+ }
+
+ .even-row {
+    background-color: #e6e6e6;
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+ }
+
+ .odd-row {
+    padding-top: 5px;
+    padding-bottom: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+}
+
+ button {
+     margin: 5px;
+ }
+
+ mat-radio-button {
+     margin: 3px;
+ }
+
+ .backdropBackground {
+    background-color: #bbbbbbf2;
+    backdrop-filter: blur(4px);
+ }
+
+ ::ng-deep .mat-radio-outer-circle {
+    border-color: #424242 !important;
+ }
+
+ ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: #7b1fa2 !important;
+ }
+
+ ::ng-deep .cdk-overlay-container {
+    backdrop-filter: blur(2px) !important;
+ }
