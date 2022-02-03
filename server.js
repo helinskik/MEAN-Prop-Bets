@@ -28,7 +28,7 @@ class Server {
     }
 
     start() {
-        port = process.env.port || 8080;
+        port = process.env.PORT || 8080;
         app.listen(port, (err) => {
             console.log('[%s] Listening on http://localhost:%d', process.env.NODE_ENV, port);
         });

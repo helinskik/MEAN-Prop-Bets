@@ -42,6 +42,7 @@
     "mongoose": "^5.7.5",
     "morgan": "~1.9.1",
     "rxjs": "~6.4.0",
+    "serve": "^13.0.2",
     "serve-favicon": "~2.5.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
