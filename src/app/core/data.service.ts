@@ -13,10 +13,10 @@ import { IBet, IEvent, IGame, IPlayer, IPagedResults, IBetResponse, IEventRespon
 @Injectable()
 export class DataService {
   
-    betUrl: string = 'http://localhost:3000/api/bets';
-    eventUrl: string = 'http://localhost:3000/api/events';
-    gameUrl: string = 'http://localhost:3000/api/games';
-    playerUrl: string = 'http://localhost:3000/api/players';
+    betUrl: string = '/api/bets';
+    eventUrl: string = '/api/events';
+    gameUrl: string = '/api/games';
+    playerUrl: string = '/api/players';
     headers = new HttpHeaders();
     
     constructor(private http: HttpClient) { 

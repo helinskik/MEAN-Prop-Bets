@@ -20,11 +20,11 @@ class TokensController {
 
     refererCheck(req, res, next) {
         //Simple check to ensure that calls to routes here are only supported for http(s)://localhost:3000
-        var referer = url.parse(req.headers.referer);
-        console.log('Referer: ' + req.headers.referer);
-        if (referer.host !== 'localhost' && referer.port !== '3000') {
-            throw new Error('Invalid request');
-        }
+        // var referer = url.parse(req.headers.referer);
+        // console.log('Referer: ' + req.headers.referer);
+        // if (referer.host !== 'localhost' && referer.port !== '3000') {
+        //     throw new Error('Invalid request');
+        // }
         next();
     }
 

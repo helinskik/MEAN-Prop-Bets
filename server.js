@@ -12,8 +12,9 @@ const express       = require('express'),
     router          = require('./routes/router'),
     database        = require('./lib/database'),
     seeder          = require('./lib/dbSeeder'),
-    app             = express(),
-    port            = 3000;
+    path            = require('path');
+    app             = express();
+var    port            = 3000;
 
 class Server {
 
@@ -44,8 +45,10 @@ class Server {
     }
 
     initExpressMiddleWare() {
-        app.use(favicon(__dirname + '/public/assets/images/favicon.ico'));
-        app.use(express.static(__dirname + '/public'));
+        app.use(favicon(path.join(__dirname + '/public/assets/images/favicon.ico')));
+        //app.use(express.static(path.join(__dirname, 'public')));
+        //app.use(express.static(__dirname + '/public'));
+
         app.use(morgan('dev'));
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(bodyParser.json());
@@ -99,10 +102,15 @@ class Server {
     initRoutes() {
         router.load(app, './controllers');
 
+        app.use(express.static(path.join(__dirname, 'public')));
+        app.get('*', (req, res) => {
+            res.sendFile(path.join(__dirname, 'public/index.html'));
+        })
+
         // redirect all others to the index (HTML5 history)
-        app.all('/*', (req, res) => {
-            res.sendFile(__dirname + '/public/index.html');
-        });
+        // app.all('/*', (req, res) => {
+        //     res.sendFile(__dirname + '/public/index.html');
+        // });
     }
 
 }
