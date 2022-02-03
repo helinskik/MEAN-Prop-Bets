@@ -3,7 +3,6 @@
     <h1 mat-dialog-title class="d-flex justify-content-center">Create Entry</h1>
     
     <form class="form-horizontal" [formGroup]="form" (submit)="submit()">
-        <input type="hidden" name="_csrf" value="{{csrfToken}}">
         <h2 mat-dialog-title style="padding-top: 25px;">Event</h2>
         <p>Pick the event you want to place bets on.</p>
         <mat-form-field style="margin-right: 20px;">
