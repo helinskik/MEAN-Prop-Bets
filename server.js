@@ -12,9 +12,9 @@ const express       = require('express'),
     router          = require('./routes/router'),
     database        = require('./lib/database'),
     seeder          = require('./lib/dbSeeder'),
-    path            = require('path');
-    app             = express();
-var    port            = 3000;
+    path            = require('path'),
+    app             = express(),
+    port            = process.env.PORT || 8080;
 
 class Server {
 
@@ -28,7 +28,6 @@ class Server {
     }
 
     start() {
-        port = process.env.PORT || 8080;
         app.listen(port, (err) => {
             console.log('[%s] Listening on http://localhost:%d', process.env.NODE_ENV, port);
         });
