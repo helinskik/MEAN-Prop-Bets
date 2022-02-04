@@ -45,7 +45,7 @@ class Server {
     }
 
     initExpressMiddleWare() {
-        app.use(favicon(path.join(__dirname + '/public/assets/images/favicon.ico')));
+        app.use(favicon(path.join(__dirname + '/public/angular-cli-node-js-mongo-db-customers-service/assets/images/favicon.ico')));
         //app.use(express.static(path.join(__dirname, 'public')));
         //app.use(express.static(__dirname + '/public'));
 
