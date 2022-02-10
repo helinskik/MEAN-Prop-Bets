@@ -25,7 +25,7 @@ class TokensController {
         // if (referer.host !== 'localhost' && referer.port !== '3000') {
         //     throw new Error('Invalid request');
         // }
-        next();
+        //next();
     }
 
     getCsrfToken(req, res) {

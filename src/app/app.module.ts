@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatSelectModule } from '@angular/material/select'
 import { MatInputModule } from '@angular/material/input'
 import { MatButtonModule } from '@angular/material/button'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { MatTableModule } from '@angular/material/table'
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { InfoDialogComponent } from './form-page/info-dialog/info-dialog.component';
@@ -21,7 +22,10 @@ import { CoreModule }   from './core/core.module';
 import { SharedModule }   from './shared/shared.module';
 //import { SigninRedirectCallbackComponent } from './redirects/signin-redirect-callback.component'
 //import { SignoutRedirectCallbackComponent } from './redirects/signout-redirect-callback.component'
-//import { AuthModule, AuthService } from '@auth0/auth0-angular';
+import { AuthModule } from '@auth0/auth0-angular';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { RegisterComponent } from './register/register.component';
+import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
   imports: [
@@ -37,12 +41,16 @@ import { SharedModule }   from './shared/shared.module';
     MatInputModule,
     MatButtonModule,
     MatTableModule,
+    MatProgressSpinnerModule,
     MatToolbarModule,
-    //AuthModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'XSRF-TOKEN',
       headerName: 'X-CSRF-TOKEN'
+    }),
+    AuthModule.forRoot({
+      domain: 'dev-njexuf7k.us.auth0.com',
+      clientId: 'U3p1DYzxxirb5rGFxRDNKK4MVBZiOVtT'
     }),
     CoreModule,   //Singleton objects
     SharedModule
@@ -52,7 +60,12 @@ import { SharedModule }   from './shared/shared.module';
     FormPageComponent,
     InfoDialogComponent,
     EntriesPageComponent,
-    ReviewPageComponent, ],
-  bootstrap:    [ AppComponent ]
+    ReviewPageComponent,
+    NavBarComponent,
+    RegisterComponent ],
+  bootstrap:    [ AppComponent ],
+  providers: [
+    AuthGuardService
+  ]
 })
 export class AppModule { }

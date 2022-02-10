@@ -7,7 +7,7 @@ import { HttpClient, HttpResponse, HttpErrorResponse, HttpHeaders } from '@angul
 
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-
+import { throwError } from 'rxjs';
 import { IBet, IEvent, IGame, IPlayer, IPagedResults, IBetResponse, IEventResponse, IGameResponse, IPlayerResponse } from '../shared/interfaces';
 
 @Injectable()
@@ -17,10 +17,56 @@ export class DataService {
     eventUrl: string = '/api/events';
     gameUrl: string = '/api/games';
     playerUrl: string = '/api/players';
+    registerUrl: string = '/api/register';
     headers = new HttpHeaders();
     
     constructor(private http: HttpClient) { 
         this.headers = this.headers.set('Access-Control-Allow-Origin', '*').set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS,DELETE,PUT');
+    }
+
+    getRegisteration(code: any) : Observable<any> {
+        
+//   const { data } = axios({
+//     url: `https://oauth2.googleapis.com/token`,
+//     method: 'post',
+    var data = {
+      client_id: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com',//process.env.APP_ID_GOES_HERE,
+      client_secret: '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',//process.env.APP_SECRET_GOES_HERE,
+      redirect_uri: 'http://localhost:8080/entries',
+      grant_type: 'authorization_code',
+      code: code
+    }
+//   });
+        return this.http.post(`https://oauth2.googleapis.com/token`, data)
+            .pipe(
+                   map((token: any) => {
+                    //this.calculateBetsOrderTotal(bets);
+                       return token;
+                   }),
+                   catchError(this.handleError)
+                );
+    }
+
+    getUserInfo(token) : Observable<any> {
+        // const { data } = await axios({
+        //     url: 'https://www.googleapis.com/oauth2/v2/userinfo',
+        //     method: 'get',
+        //     headers: {
+        //       Authorization: `Bearer ${access_token}`,
+        //     },
+        //   });
+        return this.http.get(`https://www.googleapis.com/oauth2/v2/userinfo`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .pipe(
+               map((info: any) => {
+                //this.calculateBetsOrderTotal(bets);
+                   return info;
+               }),
+               catchError(this.handleError)
+            );
     }
     
     getBets() : Observable<IBet[]> {
@@ -341,11 +387,11 @@ export class DataService {
         console.error('server error:', error); 
         if (error.error instanceof Error) {
           let errMessage = error.error.message;
-          return Observable.throw(errMessage);
+          return throwError(errMessage);
           // Use the following instead if using lite-server
           //return Observable.throw(err.text() || 'backend server error');
         }
-        return Observable.throw(error || 'Node.js server error');
+        return throwError(error || 'Node.js server error');
     }
 
 }

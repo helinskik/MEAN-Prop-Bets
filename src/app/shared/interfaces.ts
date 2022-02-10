@@ -26,6 +26,7 @@ export interface IGame {
 
 export  interface  IPlayer {
     _id: string;
+    email: string;
     name:  string;
     gameId:  string;
     record?: string;

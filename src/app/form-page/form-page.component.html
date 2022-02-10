@@ -1,5 +1,10 @@
-<div class="container-fluid">
-    <h1 class="d-flex justify-content-center mat-display-2" style="margin: 25px 0 5px;">{{event?.name}}</h1>
+<div *ngIf="showLoading" class="container-fluid">
+    <h3>Please wait while registering account...</h3>
+    <mat-progress-spinner></mat-progress-spinner>
+</div>
+
+<div *ngIf="!showLoading" class="container-fluid">
+    <h1 class="d-flex justify-content-center mat-display-2" style="margin: 25px 0 5px;">{{eventName}}</h1>
     <h3 class="d-flex justify-content-center mat-display-1" style="margin: 0px 0 25px;">Prop Bets</h3>
     <h4 class="d-flex justify-content-center">Betting closes at: {{eventDate  | date :'short'}}</h4>
     <div *ngIf="newBet" class="navbar-header d-flex justify-content-center">
