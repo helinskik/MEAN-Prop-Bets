@@ -1,7 +1,11 @@
-<div class="container-fluid">
-    <h2 *ngIf="isLive" class="d-flex justify-content-center mat-display-1" style="margin: 25px 0 25px;">EVENT IS LIVE</h2>
-    <h1 *ngIf="!isLive" class="d-flex justify-content-center" style="margin: 25px 0 25px;">Betting open for</h1>
-    <h2 class="d-flex justify-content-center mat-display-2" style="margin: 25px 0 25px;">{{event?.name}}</h2>
+<div *ngIf="showLoading" class="container-fluid">
+    <loading-screen loadingContent="Please wait while your games load..." ></loading-screen>
+</div>
+
+<div *ngIf="!showLoading">
+    <h3 *ngIf="isLive" class="d-flex justify-content-center mat-display-1" style="margin: 15px 0 5px;">EVENT IS LIVE</h3>
+    <h3 *ngIf="!isLive" class="d-flex justify-content-center" style="margin: 15px 0 5px;">Betting open for</h3>
+    <h2 class="d-flex justify-content-center mat-display-2" style="margin: 5px 0 25px;">{{event?.name}}</h2>
     <p class="d-flex justify-content-center">Select a group to see all of the submitted entries</p>
     <form class="form-horizontal d-flex justify-content-center" [formGroup]="form">
         <mat-form-field style="background-color: #7b1fa2 !important;">
@@ -25,10 +29,10 @@
     </div>
 
     <div *ngIf="players.length != 0" class="d-flex justify-content-center">
-        <table mat-table [dataSource]="players" mat-table class="mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12" style="text-align: center;">
+        <table mat-table [dataSource]="players" mat-table class="mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12" style="text-align: center; width: 100%;">
           
             <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Player Name </th>
+              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Player </th>
               <td mat-cell *matCellDef="let element"> {{element.name}} </td>
             </ng-container>
 
@@ -49,7 +53,7 @@
         </table>
     </div>
 
-    <mat-dialog-actions class="d-flex justify-content-center">
+    <mat-dialog-actions class="d-flex justify-content-center" style="margin-top: 50px;">
         <button mat-raised-button color="secondary" (click)="new()">Make a new bet</button>
     </mat-dialog-actions>
 </div>

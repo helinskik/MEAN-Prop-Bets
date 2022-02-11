@@ -1,6 +1,5 @@
 <div *ngIf="showLoading" class="container-fluid">
-    <h3>Please wait while registering account...</h3>
-    <mat-progress-spinner></mat-progress-spinner>
+    <loading-screen loadingContent="Please wait while betting sheet loads..." ></loading-screen>
 </div>
 
 <div *ngIf="!showLoading" class="container-fluid">
@@ -18,7 +17,7 @@
     <div class="row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center">
         <ng-container *ngFor="let section of sections">
 
-            <div class="col-12 m-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center">{{ section.name }}</div>
+            <div class="col-12 mt-3 mb-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center">{{ section.name }}</div>
 
             <ng-container *ngFor="let bet of section.bets; let col = index">
                     <div [ngClass]="col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'">

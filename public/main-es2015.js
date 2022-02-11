@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n    <h2 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">EVENT IS LIVE</h2>\n    <h1 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 25px 0 25px;\">Betting open for</h1>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player Name </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Record </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions class=\"d-flex justify-content-center\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Record </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <h3>Please wait while registering account...</h3>\n    <mat-progress-spinner></mat-progress-spinner>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 m-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mt-3 mb-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>");
 
 /***/ }),
 
@@ -75,6 +75,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html ***!
+  \****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n    <div class=\"row\">\n        <h3 style=\"width: 100%; color: #7b1fa2; text-align: center; position: absolute;\n        padding-top: 40%;\">{{loadingContent}}</h3>\n    </div>\n</div>\n<div class=\"loading-overlay\">\n    <div class=\"row\">\n        <mat-spinner></mat-spinner>\n    </div>\n</div>");
+
+/***/ }),
+
 /***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/nav-bar/nav-bar.component.html":
 /*!**************************************************************************************!*\
   !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/nav-bar/nav-bar.component.html ***!
@@ -88,16 +101,16 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html ***!
-  \****************************************************************************************/
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <h1>Prob Bets</h1>\r\n      <p>Current Event: </p>\r\n      <h3>Superbowl</h3>\r\n      <p class=\"lead\">Click the button below to login using a valid Google email.</p>\r\n      <button (click)=\"register()\" class=\"btn btn-default\">Register!</button>\r\n    </div>\r\n  </div>\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\r\n  <h1\r\n    class=\"d-flex justify-content-center mat-display-3\"\r\n    style=\"margin: 40px 0 40px\"\r\n  >\r\n    Prop Bets\r\n  </h1>\r\n  <h3 class=\"d-flex justify-content-center\" style=\"margin-bottom: -2px\">\r\n    Current Event:\r\n  </h3>\r\n  <h3 class=\"d-flex justify-content-center mat-display-2\">Superbowl LVI</h3>\r\n  <div class=\"justify-content-center\" style=\"padding: 20px; text-align: center\">\r\n    <p mat-display-1=\"\">\r\n      Click the button below to login or create an account using a valid Google\r\n      email.\r\n    </p>\r\n    <button\r\n      class=\"btn btn-default mat-raised-button mat-button-base mat-primary\"\r\n      color=\"primary\"\r\n      mat-raised-button=\"\"\r\n      ng-reflect-color=\"primary\"\r\n      (click)=\"register()\"\r\n    >\r\n      <span class=\"mat-button-wrapper\">Register!</span>\r\n      <div\r\n        class=\"mat-button-ripple mat-ripple\"\r\n        matripple=\"\"\r\n        ng-reflect-centered=\"false\"\r\n        ng-reflect-disabled=\"false\"\r\n        ng-reflect-trigger=\"[object HTMLButtonElement]\"\r\n      ></div>\r\n      <div class=\"mat-button-focus-overlay\"></div>\r\n    </button>\r\n  </div>\r\n</div>\r\n");
 
 /***/ }),
 
@@ -110,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"container-fluid\">\n    <h2 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <div class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{groupName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n\n    <div class=\"row\">\n\n        <table mat-table [dataSource]=\"bets\" class=\"col-12\" style=\"text-align: center;\">\n          \n            <!-- question Column -->\n            <ng-container matColumnDef=\"question\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Bet </th>\n              <td mat-cell *matCellDef=\"let element\" style=\"text-align: left;\"> {{element.questionText}} </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <!-- guess Column -->\n            <ng-container matColumnDef=\"guess\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Guess </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.guess}} </td>\n              <td mat-footer-cell *matFooterCellDef> Totals:</td>\n            </ng-container>\n\n            <!-- answer Column -->\n            <ng-container matColumnDef=\"answer\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: right;\"> Answer</th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.answer}} </td>\n              <td mat-footer-cell *matFooterCellDef> {{results}} </td>\n            </ng-container>\n\n            <!-- answer check -->\n            <ng-container matColumnDef=\"check\">\n              <th mat-header-cell *matHeaderCellDef></th>\n              <td mat-cell *matCellDef=\"let element\">\n                <span *ngIf=\"element.answer == element.guess\" class=\"material-icons\">\n                    done_outline\n                </span>\n                <span *ngIf=\"element.answer != '' && element.answer != element.guess\" class=\"material-icons\">\n                    clear\n                </span>\n              </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            <tr mat-footer-row *matFooterRowDef=\"displayedColumns\"></tr>\n        </table>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"refresh()\">Refresh</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"back()\">Back</button>\n    </mat-dialog-actions>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div *ngIf=\"showLoading\" class=\"container-fluid\">\n  <loading-screen loadingContent=\"Please wait while bets load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h2 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <div class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{groupName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n\n    <div class=\"row\">\n\n        <table mat-table [dataSource]=\"bets\" class=\"col-12\" style=\"text-align: center;\">\n          \n            <!-- question Column -->\n            <ng-container matColumnDef=\"question\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center; width: 50%;\"> Bet </th>\n              <td mat-cell *matCellDef=\"let element\" style=\"text-align: left;\"> {{element.questionText}} </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <!-- guess Column -->\n            <ng-container matColumnDef=\"guess\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Guess </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.guess}} </td>\n              <td mat-footer-cell *matFooterCellDef> Totals:</td>\n            </ng-container>\n\n            <!-- answer Column -->\n            <ng-container matColumnDef=\"answer\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: right;\"> Answer</th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.answer}} </td>\n              <td mat-footer-cell *matFooterCellDef> {{results}} </td>\n            </ng-container>\n\n            <!-- answer check -->\n            <ng-container matColumnDef=\"check\">\n              <th mat-header-cell *matHeaderCellDef></th>\n              <td mat-cell *matCellDef=\"let element\">\n                <span *ngIf=\"element.answer == element.guess\" class=\"material-icons\">\n                    done_outline\n                </span>\n                <span *ngIf=\"element.answer != '' && element.answer != element.guess\" class=\"material-icons\">\n                    clear\n                </span>\n              </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            <tr mat-footer-row *matFooterRowDef=\"displayedColumns\"></tr>\n        </table>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"refresh()\">Refresh</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"back()\">Back</button>\n    </mat-dialog-actions>\n</div>");
 
 /***/ }),
 
@@ -397,7 +410,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _form_page_form_page_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./form-page/form-page.component */ "./src/app/form-page/form-page.component.ts");
 /* harmony import */ var _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./entries-page/entries-page.component */ "./src/app/entries-page/entries-page.component.ts");
 /* harmony import */ var _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./review-page/review-page.component */ "./src/app/review-page/review-page.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
+/* harmony import */ var _register_page_register_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./register-page/register.component */ "./src/app/register-page/register.component.ts");
 
 
 
@@ -419,7 +432,7 @@ const routes = [
             },
             {
                 path: 'register',
-                component: _register_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"]
+                component: _register_page_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"]
             },
             {
                 path: 'review',
@@ -505,12 +518,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./entries-page/entries-page.component */ "./src/app/entries-page/entries-page.component.ts");
 /* harmony import */ var _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! ./review-page/review-page.component */ "./src/app/review-page/review-page.component.ts");
-/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./core/core.module */ "./src/app/core/core.module.ts");
-/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
-/* harmony import */ var _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @auth0/auth0-angular */ "./node_modules/@auth0/auth0-angular/fesm2015/auth0-auth0-angular.js");
-/* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "./src/app/nav-bar/nav-bar.component.ts");
-/* harmony import */ var _register_register_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./register/register.component */ "./src/app/register/register.component.ts");
-/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+/* harmony import */ var _loading_screen_loading_screen_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! ./loading-screen/loading-screen.component */ "./src/app/loading-screen/loading-screen.component.ts");
+/* harmony import */ var _core_core_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! ./core/core.module */ "./src/app/core/core.module.ts");
+/* harmony import */ var _shared_shared_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! ./shared/shared.module */ "./src/app/shared/shared.module.ts");
+/* harmony import */ var _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @auth0/auth0-angular */ "./node_modules/@auth0/auth0-angular/fesm2015/auth0-auth0-angular.js");
+/* harmony import */ var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! ./nav-bar/nav-bar.component */ "./src/app/nav-bar/nav-bar.component.ts");
+/* harmony import */ var _register_page_register_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! ./register-page/register.component */ "./src/app/register-page/register.component.ts");
+/* harmony import */ var _auth_guard_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! ./auth-guard.service */ "./src/app/auth-guard.service.ts");
+
 
 
 
@@ -564,12 +579,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
                 cookieName: 'XSRF-TOKEN',
                 headerName: 'X-CSRF-TOKEN'
             }),
-            _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_23__["AuthModule"].forRoot({
+            _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_24__["AuthModule"].forRoot({
                 domain: 'dev-njexuf7k.us.auth0.com',
                 clientId: 'U3p1DYzxxirb5rGFxRDNKK4MVBZiOVtT'
             }),
-            _core_core_module__WEBPACK_IMPORTED_MODULE_21__["CoreModule"],
-            _shared_shared_module__WEBPACK_IMPORTED_MODULE_22__["SharedModule"]
+            _core_core_module__WEBPACK_IMPORTED_MODULE_22__["CoreModule"],
+            _shared_shared_module__WEBPACK_IMPORTED_MODULE_23__["SharedModule"]
         ],
         entryComponents: [_form_page_info_dialog_info_dialog_component__WEBPACK_IMPORTED_MODULE_17__["InfoDialogComponent"]],
         declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
@@ -577,11 +592,12 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _form_page_info_dialog_info_dialog_component__WEBPACK_IMPORTED_MODULE_17__["InfoDialogComponent"],
             _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_19__["EntriesPageComponent"],
             _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_20__["ReviewPageComponent"],
-            _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_24__["NavBarComponent"],
-            _register_register_component__WEBPACK_IMPORTED_MODULE_25__["RegisterComponent"]],
+            _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_25__["NavBarComponent"],
+            _register_page_register_component__WEBPACK_IMPORTED_MODULE_26__["RegisterComponent"],
+            _loading_screen_loading_screen_component__WEBPACK_IMPORTED_MODULE_21__["LoadingScreenComponent"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
         providers: [
-            _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__["AuthGuardService"]
+            _auth_guard_service__WEBPACK_IMPORTED_MODULE_27__["AuthGuardService"]
         ]
     })
 ], AppModule);
@@ -1184,7 +1200,7 @@ TrackByService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("#game {\n  background-color: #7b1fa2 !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0NBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2VudHJpZXMtcGFnZS9lbnRyaWVzLXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjZ2FtZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XHJcbn0iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("#game {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .mat-form-field-wrapper {\n  padding-bottom: 1.1em !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0NBQUE7QUNDRjs7QURFQTtFQUNFLGdDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2dhbWUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcclxuICBwYWRkaW5nLWJvdHRvbTogMS4xZW0gIWltcG9ydGFudDtcclxufVxyXG4iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcbiAgcGFkZGluZy1ib3R0b206IDEuMWVtICFpbXBvcnRhbnQ7XG59Il19 */");
 
 /***/ }),
 
@@ -1222,26 +1238,24 @@ let EntriesPageComponent = class EntriesPageComponent {
         this.tablePlayers = [];
         this.displayedColumns = ["name", "record", "details"];
         this.isLive = false;
+        this.showLoading = true;
     }
-    ngOnDestroy() {
-        //this.dataServiceSubscription.unsubscribe()
-    }
-    ngOnInit() {
+    ngAfterViewInit() {
         const urlParams = query_string__WEBPACK_IMPORTED_MODULE_5__["parse"](window.location.search);
         if (urlParams.error) {
             console.log(`An error occurred: ${urlParams.error}`);
         }
         else {
-            //this.dataService.getPlayers().subscribe((players) => {
-            //  this.players = players;
             let um = window.localStorage.getItem("um");
             let un = window.localStorage.getItem("un");
             if (um && un) {
-                //this.playersGames = this.players.filter(p => p.email == um)
                 this.userInfo = {
                     email: um,
                     name: un
                 };
+                setTimeout(() => {
+                    this.showLoading = false;
+                }, 1000);
             }
             else if (urlParams.code) {
                 this.dataService
@@ -1251,14 +1265,15 @@ let EntriesPageComponent = class EntriesPageComponent {
                         this.userInfo = info;
                         window.localStorage.setItem("um", this.userInfo.email);
                         window.localStorage.setItem("un", this.userInfo.name);
-                        //this.playersGames = this.players.filter(p => p.email == this.userInfo.email)
+                        setTimeout(() => {
+                            this.showLoading = false;
+                        }, 1000);
                     });
                 });
             }
             else {
                 this.router.navigate(['register']);
             }
-            //});
         }
         this.dataService.getEvents().subscribe((events) => {
             if (events !== null && events.length > 1) {
@@ -1390,7 +1405,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let FormPageComponent = class FormPageComponent {
-    //private dataServiceSubscription: Subscription
     constructor(dialog, dataService, router) {
         this.dialog = dialog;
         this.dataService = dataService;
@@ -1439,6 +1453,7 @@ let FormPageComponent = class FormPageComponent {
         this.isAdmin = false;
         this.newBet = false;
         this.showLoading = true;
+        this.showLoadingTest = true;
         this.playersGames = [];
         this.playerAlreadyBet = false;
         this.guesses = [];
@@ -1449,14 +1464,11 @@ let FormPageComponent = class FormPageComponent {
             gameId: null,
         };
     }
-    ngOnDestroy() {
-        //this.dataServiceSubscription.unsubscribe()
-    }
-    ngOnInit() {
+    ngAfterViewInit() {
         this.dataService.getPlayers().subscribe((players) => {
             this.players = players;
             let um = window.localStorage.getItem("um");
-            let un = window.localStorage.getItem("um");
+            let un = window.localStorage.getItem("un");
             if (um && un) {
                 this.playersGames = this.players.filter((p) => p.email == um);
                 this.userInfo = {
@@ -1474,43 +1486,13 @@ let FormPageComponent = class FormPageComponent {
             name: g,
             bets: this.info.bets.filter((i) => i.section === g),
         }));
-        //this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-        //  this.players = players;
-        //if (this.players.find(p => p.email == this.userInfo.email))
-        //  this.router.navigate(['entries'])
-        //})
-        // this.dataService.getEvents().subscribe((events) => {
-        //   if(events !== null && events.length > 0) {
-        //     // this.event = events.sort((a: IEvent, b: IEvent) => {
-        //     //   return a.start.getTime() - b.start.getTime()
-        //     // })[0]
-        //     //this.dataService.setEvent(this.event)
-        //     this.event = events[0]
-        //     var today = new Date();
-        //     this.eventDate = new Date(this.event.start)
-        //     if ( today > this.eventDate ) {
-        //       this.router.navigate(['entries'])
-        //     }
-        //     else {
-        //       var games = new Set(this.info.bets.map(item => item.section))
-        //       games.forEach(g =>
-        //         this.sections.push({
-        //           name: g,
-        //           bets: this.info.bets.filter(i => i.section === g)
-        //         }
-        //       ))
-        //       this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-        //         this.players = players;
-        //         if (this.players.find(p => p.email == this.userInfo.email))
-        //           this.router.navigate(['entries'])
-        //       })
-        //     }
-        //   }
-        // })
     }
     makeBet() {
-        this.openDialog();
-        this.newBet = true;
+        setTimeout(() => {
+            this.showLoading = false;
+            this.openDialog();
+            this.newBet = true;
+        }, 1000);
     }
     seeEntries() {
         this.router.navigate(["entries"]);
@@ -1578,7 +1560,6 @@ let FormPageComponent = class FormPageComponent {
         }
     }
     openDialog() {
-        this.showLoading = false;
         const dialogConfig = new _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogConfig"]();
         dialogConfig.disableClose = true;
         dialogConfig.autoFocus = true;
@@ -1843,6 +1824,55 @@ InfoDialogComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
+/***/ "./src/app/loading-screen/loading-screen.component.scss":
+/*!**************************************************************!*\
+  !*** ./src/app/loading-screen/loading-screen.component.scss ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".loading-overlay {\n  left: 0 !important;\n  top: 0 !important;\n  z-index: 10000 !important;\n  width: 100% !important;\n  height: 100% !important;\n  position: fixed !important;\n  cursor: pointer !important;\n  visibility: visible !important;\n  transition: visibility 0s, opacity 0.4s linear !important;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: wait !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9hZGluZy1zY3JlZW4vQzpcXFByb2plY3RzXFxhbmd1bGFyIG5vZGVqcyBtb25nb2RiXFxNRUFOLVByb3AtQmV0cy9zcmNcXGFwcFxcbG9hZGluZy1zY3JlZW5cXGxvYWRpbmctc2NyZWVuLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2FkaW5nLXNjcmVlbi9sb2FkaW5nLXNjcmVlbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSwwQkFBQTtFQUNBLDBCQUFBO0VBQ0EsOEJBQUE7RUFDQSx5REFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EsdUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2xvYWRpbmctc2NyZWVuL2xvYWRpbmctc2NyZWVuLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvYWRpbmctb3ZlcmxheSB7XHJcbiAgbGVmdDogMCAhaW1wb3J0YW50O1xyXG4gIHRvcDogMCAhaW1wb3J0YW50O1xyXG4gIHotaW5kZXg6IDEwMDAwICFpbXBvcnRhbnQ7XHJcbiAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcclxuICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcclxuICBwb3NpdGlvbjogZml4ZWQgIWltcG9ydGFudDtcclxuICBjdXJzb3I6IHBvaW50ZXIgIWltcG9ydGFudDtcclxuICB2aXNpYmlsaXR5OiB2aXNpYmxlICFpbXBvcnRhbnQ7XHJcbiAgdHJhbnNpdGlvbjogdmlzaWJpbGl0eSAwcywgb3BhY2l0eSAwLjRzIGxpbmVhciAhaW1wb3J0YW50O1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBjdXJzb3I6IHdhaXQgIWltcG9ydGFudDtcclxufVxyXG4iLCIubG9hZGluZy1vdmVybGF5IHtcbiAgbGVmdDogMCAhaW1wb3J0YW50O1xuICB0b3A6IDAgIWltcG9ydGFudDtcbiAgei1pbmRleDogMTAwMDAgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAxMDAlICFpbXBvcnRhbnQ7XG4gIHBvc2l0aW9uOiBmaXhlZCAhaW1wb3J0YW50O1xuICBjdXJzb3I6IHBvaW50ZXIgIWltcG9ydGFudDtcbiAgdmlzaWJpbGl0eTogdmlzaWJsZSAhaW1wb3J0YW50O1xuICB0cmFuc2l0aW9uOiB2aXNpYmlsaXR5IDBzLCBvcGFjaXR5IDAuNHMgbGluZWFyICFpbXBvcnRhbnQ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBjdXJzb3I6IHdhaXQgIWltcG9ydGFudDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/loading-screen/loading-screen.component.ts":
+/*!************************************************************!*\
+  !*** ./src/app/loading-screen/loading-screen.component.ts ***!
+  \************************************************************/
+/*! exports provided: LoadingScreenComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "LoadingScreenComponent", function() { return LoadingScreenComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+
+
+let LoadingScreenComponent = class LoadingScreenComponent {
+    constructor() {
+        this.loadingContent = "";
+    }
+    ngOnInit() {
+    }
+};
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()
+], LoadingScreenComponent.prototype, "loadingContent", void 0);
+LoadingScreenComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'loading-screen',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./loading-screen.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./loading-screen.component.scss */ "./src/app/loading-screen/loading-screen.component.scss")).default]
+    })
+], LoadingScreenComponent);
+
+
+
+/***/ }),
+
 /***/ "./src/app/nav-bar/nav-bar.component.scss":
 /*!************************************************!*\
   !*** ./src/app/nav-bar/nav-bar.component.scss ***!
@@ -1892,10 +1922,10 @@ NavBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/register/register.component.ts":
-/*!************************************************!*\
-  !*** ./src/app/register/register.component.ts ***!
-  \************************************************/
+/***/ "./src/app/register-page/register.component.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/register-page/register.component.ts ***!
+  \*****************************************************/
 /*! exports provided: RegisterComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1929,7 +1959,7 @@ let RegisterComponent = class RegisterComponent {
 };
 RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html")).default
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html")).default
     })
 ], RegisterComponent);
 
@@ -1969,20 +1999,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let ReviewPageComponent = class ReviewPageComponent {
-    //private dataServiceSubscription: Subscription
-    constructor(//private mySqlService: MySqlService, 
-    router, dataService, route) {
+    constructor(router, dataService, route) {
         this.router = router;
         this.dataService = dataService;
         this.route = route;
         this.isDisabled = true;
         this.guesses = [];
         this.displayedColumns = ['question', 'guess', 'answer', 'check'];
+        this.showLoading = true;
     }
-    ngOnDestroy() {
-        //this.dataServiceSubscription.unsubscribe()
-    }
-    ngOnInit() {
+    ngAfterViewInit() {
         this.dataService.getEvents().subscribe((events) => {
             if (events !== null) {
                 let sortedEvents = events.sort((a, b) => {
@@ -2002,7 +2028,11 @@ let ReviewPageComponent = class ReviewPageComponent {
         this.dataService.getBets().subscribe(bets => {
             this.bets = bets.filter(bet => bet.playerId === this.playerId);
             let rightPicks = this.bets.filter(item => item.guess == item.answer);
-            this.results = rightPicks.length + "/" + this.bets.length;
+            let finishedPicks = this.bets.filter(item => item.answer);
+            this.results = rightPicks.length + "/" + finishedPicks.length;
+            setTimeout(() => {
+                this.showLoading = false;
+            }, 1000);
         });
     }
     refresh() {

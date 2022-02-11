@@ -1,7 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, AfterViewInit } from "@angular/core";
 import { MatRadioChange } from "@angular/material/radio";
 import { MatDialog, MatDialogConfig } from "@angular/material/dialog";
-import { MatProgressSpinner } from "@angular/material/progress-spinner";
 import { InfoDialogComponent } from "./info-dialog/info-dialog.component";
 import { Router } from "@angular/router";
 import { DataService } from "../core/data.service";
@@ -12,7 +11,7 @@ import { IBet, IEvent, IGame, IPlayer } from "../shared/interfaces";
   templateUrl: "./form-page.component.html",
   styleUrls: ["./form-page.component.scss"],
 })
-export class FormPageComponent implements OnInit {
+export class FormPageComponent {
   public sections = [];
   public info = {
     bets: [
@@ -66,6 +65,7 @@ export class FormPageComponent implements OnInit {
   public eventDate: Date;
   public userInfo;
   public showLoading: boolean = true;
+  public showLoadingTest: boolean = true;
   public playersGames: IPlayer[] = [];
   public playerAlreadyBet: boolean = false;
   guesses: IBet[] = [];
@@ -79,19 +79,14 @@ export class FormPageComponent implements OnInit {
     name: null,
     gameId: null,
   };
-  //private dataServiceSubscription: Subscription
-
+  
   constructor(
     private dialog: MatDialog,
     private dataService: DataService,
     private router: Router
   ) {}
 
-  ngOnDestroy(): void {
-    //this.dataServiceSubscription.unsubscribe()
-  }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.dataService.getPlayers().subscribe((players) => {
       this.players = players;
 
@@ -103,7 +98,7 @@ export class FormPageComponent implements OnInit {
           email: um,
           name: un,
         };
-        this.makeBet();
+        this.makeBet()
       } else {
         this.router.navigate(["register"]);
       }
@@ -116,47 +111,14 @@ export class FormPageComponent implements OnInit {
         bets: this.info.bets.filter((i) => i.section === g),
       })
     );
-
-    //this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-    //  this.players = players;
-    //if (this.players.find(p => p.email == this.userInfo.email))
-    //  this.router.navigate(['entries'])
-    //})
-
-    // this.dataService.getEvents().subscribe((events) => {
-    //   if(events !== null && events.length > 0) {
-    //     // this.event = events.sort((a: IEvent, b: IEvent) => {
-    //     //   return a.start.getTime() - b.start.getTime()
-    //     // })[0]
-    //     //this.dataService.setEvent(this.event)
-    //     this.event = events[0]
-    //     var today = new Date();
-    //     this.eventDate = new Date(this.event.start)
-    //     if ( today > this.eventDate ) {
-    //       this.router.navigate(['entries'])
-    //     }
-    //     else {
-    //       var games = new Set(this.info.bets.map(item => item.section))
-    //       games.forEach(g =>
-    //         this.sections.push({
-    //           name: g,
-    //           bets: this.info.bets.filter(i => i.section === g)
-    //         }
-    //       ))
-
-    //       this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-    //         this.players = players;
-    //         if (this.players.find(p => p.email == this.userInfo.email))
-    //           this.router.navigate(['entries'])
-    //       })
-    //     }
-    //   }
-    // })
   }
 
   makeBet() {
-    this.openDialog();
-    this.newBet = true;
+    setTimeout(()=>{
+      this.showLoading = false
+      this.openDialog();
+      this.newBet = true;
+    },1000)
   }
 
   seeEntries() {
@@ -229,7 +191,6 @@ export class FormPageComponent implements OnInit {
   }
 
   openDialog() {
-    this.showLoading = false;
     const dialogConfig = new MatDialogConfig();
 
     dialogConfig.disableClose = true;

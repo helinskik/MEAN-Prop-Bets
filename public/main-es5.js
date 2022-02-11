@@ -91,7 +91,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container-fluid\">\n    <h2 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">EVENT IS LIVE</h2>\n    <h1 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 25px 0 25px;\">Betting open for</h1>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player Name </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Record </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions class=\"d-flex justify-content-center\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Record </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <h3>Please wait while registering account...</h3>\n    <mat-progress-spinner></mat-progress-spinner>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 m-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mt-3 mb-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -136,6 +136,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html":
+  /*!****************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html ***!
+    \****************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppLoadingScreenLoadingScreenComponentHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <h3 style=\"width: 100%; color: #7b1fa2; text-align: center; position: absolute;\n        padding-top: 40%;\">{{loadingContent}}</h3>\n    </div>\n</div>\n<div class=\"loading-overlay\">\n    <div class=\"row\">\n        <mat-spinner></mat-spinner>\n    </div>\n</div>";
+    /***/
+  },
+
+  /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/nav-bar/nav-bar.component.html":
   /*!**************************************************************************************!*\
     !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/nav-bar/nav-bar.component.html ***!
@@ -156,22 +176,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html":
-  /*!****************************************************************************************!*\
-    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html ***!
-    \****************************************************************************************/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html":
+  /*!*********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html ***!
+    \*********************************************************************************************/
 
   /*! exports provided: default */
 
   /***/
-  function node_modulesRawLoaderDistCjsJsSrcAppRegisterRegisterComponentHtml(module, __webpack_exports__, __webpack_require__) {
+  function node_modulesRawLoaderDistCjsJsSrcAppRegisterPageRegisterComponentHtml(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container\">\r\n  <div class=\"row\">\r\n    <div class=\"col-md-6\">\r\n      <h1>Prob Bets</h1>\r\n      <p>Current Event: </p>\r\n      <h3>Superbowl</h3>\r\n      <p class=\"lead\">Click the button below to login using a valid Google email.</p>\r\n      <button (click)=\"register()\" class=\"btn btn-default\">Register!</button>\r\n    </div>\r\n  </div>\r\n</div>";
+    __webpack_exports__["default"] = "<div class=\"container-fluid\">\r\n  <h1\r\n    class=\"d-flex justify-content-center mat-display-3\"\r\n    style=\"margin: 40px 0 40px\"\r\n  >\r\n    Prop Bets\r\n  </h1>\r\n  <h3 class=\"d-flex justify-content-center\" style=\"margin-bottom: -2px\">\r\n    Current Event:\r\n  </h3>\r\n  <h3 class=\"d-flex justify-content-center mat-display-2\">Superbowl LVI</h3>\r\n  <div class=\"justify-content-center\" style=\"padding: 20px; text-align: center\">\r\n    <p mat-display-1=\"\">\r\n      Click the button below to login or create an account using a valid Google\r\n      email.\r\n    </p>\r\n    <button\r\n      class=\"btn btn-default mat-raised-button mat-button-base mat-primary\"\r\n      color=\"primary\"\r\n      mat-raised-button=\"\"\r\n      ng-reflect-color=\"primary\"\r\n      (click)=\"register()\"\r\n    >\r\n      <span class=\"mat-button-wrapper\">Register!</span>\r\n      <div\r\n        class=\"mat-button-ripple mat-ripple\"\r\n        matripple=\"\"\r\n        ng-reflect-centered=\"false\"\r\n        ng-reflect-disabled=\"false\"\r\n        ng-reflect-trigger=\"[object HTMLButtonElement]\"\r\n      ></div>\r\n      <div class=\"mat-button-focus-overlay\"></div>\r\n    </button>\r\n  </div>\r\n</div>\r\n";
     /***/
   },
 
@@ -191,7 +211,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container-fluid\">\n    <h2 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <div class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{groupName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n\n    <div class=\"row\">\n\n        <table mat-table [dataSource]=\"bets\" class=\"col-12\" style=\"text-align: center;\">\n          \n            <!-- question Column -->\n            <ng-container matColumnDef=\"question\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Bet </th>\n              <td mat-cell *matCellDef=\"let element\" style=\"text-align: left;\"> {{element.questionText}} </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <!-- guess Column -->\n            <ng-container matColumnDef=\"guess\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Guess </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.guess}} </td>\n              <td mat-footer-cell *matFooterCellDef> Totals:</td>\n            </ng-container>\n\n            <!-- answer Column -->\n            <ng-container matColumnDef=\"answer\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: right;\"> Answer</th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.answer}} </td>\n              <td mat-footer-cell *matFooterCellDef> {{results}} </td>\n            </ng-container>\n\n            <!-- answer check -->\n            <ng-container matColumnDef=\"check\">\n              <th mat-header-cell *matHeaderCellDef></th>\n              <td mat-cell *matCellDef=\"let element\">\n                <span *ngIf=\"element.answer == element.guess\" class=\"material-icons\">\n                    done_outline\n                </span>\n                <span *ngIf=\"element.answer != '' && element.answer != element.guess\" class=\"material-icons\">\n                    clear\n                </span>\n              </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            <tr mat-footer-row *matFooterRowDef=\"displayedColumns\"></tr>\n        </table>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"refresh()\">Refresh</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"back()\">Back</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n  <loading-screen loadingContent=\"Please wait while bets load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h2 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 25px 0 25px;\">{{event?.name}}</h2>\n    <div class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{groupName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n\n    <div class=\"row\">\n\n        <table mat-table [dataSource]=\"bets\" class=\"col-12\" style=\"text-align: center;\">\n          \n            <!-- question Column -->\n            <ng-container matColumnDef=\"question\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center; width: 50%;\"> Bet </th>\n              <td mat-cell *matCellDef=\"let element\" style=\"text-align: left;\"> {{element.questionText}} </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <!-- guess Column -->\n            <ng-container matColumnDef=\"guess\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Guess </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.guess}} </td>\n              <td mat-footer-cell *matFooterCellDef> Totals:</td>\n            </ng-container>\n\n            <!-- answer Column -->\n            <ng-container matColumnDef=\"answer\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: right;\"> Answer</th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.answer}} </td>\n              <td mat-footer-cell *matFooterCellDef> {{results}} </td>\n            </ng-container>\n\n            <!-- answer check -->\n            <ng-container matColumnDef=\"check\">\n              <th mat-header-cell *matHeaderCellDef></th>\n              <td mat-cell *matCellDef=\"let element\">\n                <span *ngIf=\"element.answer == element.guess\" class=\"material-icons\">\n                    done_outline\n                </span>\n                <span *ngIf=\"element.answer != '' && element.answer != element.guess\" class=\"material-icons\">\n                    clear\n                </span>\n              </td>\n              <td mat-footer-cell *matFooterCellDef></td>\n            </ng-container>\n\n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n            <tr mat-footer-row *matFooterRowDef=\"displayedColumns\"></tr>\n        </table>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button mat-raised-button color=\"primary\" (click)=\"refresh()\">Refresh</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"back()\">Back</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -877,9 +897,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _register_register_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
-    /*! ./register/register.component */
-    "./src/app/register/register.component.ts");
+    var _register_page_register_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./register-page/register.component */
+    "./src/app/register-page/register.component.ts");
 
     var routes = [{
       path: '',
@@ -891,7 +911,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         component: _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_4__["EntriesPageComponent"]
       }, {
         path: 'register',
-        component: _register_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"]
+        component: _register_page_register_component__WEBPACK_IMPORTED_MODULE_6__["RegisterComponent"]
       }, {
         path: 'review',
         component: _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_5__["ReviewPageComponent"],
@@ -1110,37 +1130,43 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _core_core_module__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    var _loading_screen_loading_screen_component__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    /*! ./loading-screen/loading-screen.component */
+    "./src/app/loading-screen/loading-screen.component.ts");
+    /* harmony import */
+
+
+    var _core_core_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
     /*! ./core/core.module */
     "./src/app/core/core.module.ts");
     /* harmony import */
 
 
-    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    var _shared_shared_module__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
     /*! ./shared/shared.module */
     "./src/app/shared/shared.module.ts");
     /* harmony import */
 
 
-    var _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+    var _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
     /*! @auth0/auth0-angular */
     "./node_modules/@auth0/auth0-angular/fesm2015/auth0-auth0-angular.js");
     /* harmony import */
 
 
-    var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+    var _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
     /*! ./nav-bar/nav-bar.component */
     "./src/app/nav-bar/nav-bar.component.ts");
     /* harmony import */
 
 
-    var _register_register_component__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
-    /*! ./register/register.component */
-    "./src/app/register/register.component.ts");
+    var _register_page_register_component__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    /*! ./register-page/register.component */
+    "./src/app/register-page/register.component.ts");
     /* harmony import */
 
 
-    var _auth_guard_service__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    var _auth_guard_service__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
     /*! ./auth-guard.service */
     "./src/app/auth-guard.service.ts"); //import { SigninRedirectCallbackComponent } from './redirects/signin-redirect-callback.component'
     //import { SignoutRedirectCallbackComponent } from './redirects/signout-redirect-callback.component'
@@ -1154,14 +1180,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"], _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"], _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_6__["BrowserAnimationsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["FormsModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_7__["ReactiveFormsModule"], _angular_material_radio__WEBPACK_IMPORTED_MODULE_8__["MatRadioModule"], _angular_material_dialog__WEBPACK_IMPORTED_MODULE_9__["MatDialogModule"], _angular_material_form_field__WEBPACK_IMPORTED_MODULE_10__["MatFormFieldModule"], _angular_material_select__WEBPACK_IMPORTED_MODULE_11__["MatSelectModule"], _angular_material_input__WEBPACK_IMPORTED_MODULE_12__["MatInputModule"], _angular_material_button__WEBPACK_IMPORTED_MODULE_13__["MatButtonModule"], _angular_material_table__WEBPACK_IMPORTED_MODULE_15__["MatTableModule"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_14__["MatProgressSpinnerModule"], _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_16__["MatToolbarModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_18__["HttpClientModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_18__["HttpClientXsrfModule"].withOptions({
         cookieName: 'XSRF-TOKEN',
         headerName: 'X-CSRF-TOKEN'
-      }), _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_23__["AuthModule"].forRoot({
+      }), _auth0_auth0_angular__WEBPACK_IMPORTED_MODULE_24__["AuthModule"].forRoot({
         domain: 'dev-njexuf7k.us.auth0.com',
         clientId: 'U3p1DYzxxirb5rGFxRDNKK4MVBZiOVtT'
-      }), _core_core_module__WEBPACK_IMPORTED_MODULE_21__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_22__["SharedModule"]],
+      }), _core_core_module__WEBPACK_IMPORTED_MODULE_22__["CoreModule"], _shared_shared_module__WEBPACK_IMPORTED_MODULE_23__["SharedModule"]],
       entryComponents: [_form_page_info_dialog_info_dialog_component__WEBPACK_IMPORTED_MODULE_17__["InfoDialogComponent"]],
-      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _form_page_form_page_component__WEBPACK_IMPORTED_MODULE_5__["FormPageComponent"], _form_page_info_dialog_info_dialog_component__WEBPACK_IMPORTED_MODULE_17__["InfoDialogComponent"], _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_19__["EntriesPageComponent"], _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_20__["ReviewPageComponent"], _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_24__["NavBarComponent"], _register_register_component__WEBPACK_IMPORTED_MODULE_25__["RegisterComponent"]],
+      declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"], _form_page_form_page_component__WEBPACK_IMPORTED_MODULE_5__["FormPageComponent"], _form_page_info_dialog_info_dialog_component__WEBPACK_IMPORTED_MODULE_17__["InfoDialogComponent"], _entries_page_entries_page_component__WEBPACK_IMPORTED_MODULE_19__["EntriesPageComponent"], _review_page_review_page_component__WEBPACK_IMPORTED_MODULE_20__["ReviewPageComponent"], _nav_bar_nav_bar_component__WEBPACK_IMPORTED_MODULE_25__["NavBarComponent"], _register_page_register_component__WEBPACK_IMPORTED_MODULE_26__["RegisterComponent"], _loading_screen_loading_screen_component__WEBPACK_IMPORTED_MODULE_21__["LoadingScreenComponent"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]],
-      providers: [_auth_guard_service__WEBPACK_IMPORTED_MODULE_26__["AuthGuardService"]]
+      providers: [_auth_guard_service__WEBPACK_IMPORTED_MODULE_27__["AuthGuardService"]]
     })], AppModule);
     /***/
   },
@@ -2006,7 +2032,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#game {\n  background-color: #7b1fa2 !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksb0NBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL2VudHJpZXMtcGFnZS9lbnRyaWVzLXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjZ2FtZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XHJcbn0iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcbn0iXX0= */";
+    __webpack_exports__["default"] = "#game {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .mat-form-field-wrapper {\n  padding-bottom: 1.1em !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0NBQUE7QUNDRjs7QURFQTtFQUNFLGdDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2dhbWUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcclxuICBwYWRkaW5nLWJvdHRvbTogMS4xZW0gIWltcG9ydGFudDtcclxufVxyXG4iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcbiAgcGFkZGluZy1ib3R0b206IDEuMWVtICFpbXBvcnRhbnQ7XG59Il19 */";
     /***/
   },
 
@@ -2083,15 +2109,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.tablePlayers = [];
         this.displayedColumns = ["name", "record", "details"];
         this.isLive = false;
+        this.showLoading = true;
       }
 
       _createClass(EntriesPageComponent, [{
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {//this.dataServiceSubscription.unsubscribe()
-        }
-      }, {
-        key: "ngOnInit",
-        value: function ngOnInit() {
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
           var _this2 = this;
 
           var urlParams = query_string__WEBPACK_IMPORTED_MODULE_5__["parse"](window.location.search);
@@ -2099,29 +2122,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (urlParams.error) {
             console.log("An error occurred: ".concat(urlParams.error));
           } else {
-            //this.dataService.getPlayers().subscribe((players) => {
-            //  this.players = players;
             var um = window.localStorage.getItem("um");
             var un = window.localStorage.getItem("un");
 
             if (um && un) {
-              //this.playersGames = this.players.filter(p => p.email == um)
               this.userInfo = {
                 email: um,
                 name: un
               };
+              setTimeout(function () {
+                _this2.showLoading = false;
+              }, 1000);
             } else if (urlParams.code) {
               this.dataService.getRegisteration(urlParams.code).subscribe(function (token) {
                 _this2.dataService.getUserInfo(token.access_token).subscribe(function (info) {
                   _this2.userInfo = info;
                   window.localStorage.setItem("um", _this2.userInfo.email);
-                  window.localStorage.setItem("un", _this2.userInfo.name); //this.playersGames = this.players.filter(p => p.email == this.userInfo.email)
+                  window.localStorage.setItem("un", _this2.userInfo.name);
+                  setTimeout(function () {
+                    _this2.showLoading = false;
+                  }, 1000);
                 });
               });
             } else {
               this.router.navigate(['register']);
-            } //});
-
+            }
           }
 
           this.dataService.getEvents().subscribe(function (events) {
@@ -2322,7 +2347,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     "./src/app/core/data.service.ts");
 
     var FormPageComponent = /*#__PURE__*/function () {
-      //private dataServiceSubscription: Subscription
       function FormPageComponent(dialog, dataService, router) {
         _classCallCheck(this, FormPageComponent);
 
@@ -2367,6 +2391,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isAdmin = false;
         this.newBet = false;
         this.showLoading = true;
+        this.showLoadingTest = true;
         this.playersGames = [];
         this.playerAlreadyBet = false;
         this.guesses = [];
@@ -2379,18 +2404,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(FormPageComponent, [{
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {//this.dataServiceSubscription.unsubscribe()
-        }
-      }, {
-        key: "ngOnInit",
-        value: function ngOnInit() {
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
           var _this5 = this;
 
           this.dataService.getPlayers().subscribe(function (players) {
             _this5.players = players;
             var um = window.localStorage.getItem("um");
-            var un = window.localStorage.getItem("um");
+            var un = window.localStorage.getItem("un");
 
             if (um && un) {
               _this5.playersGames = _this5.players.filter(function (p) {
@@ -2416,45 +2437,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 return i.section === g;
               })
             });
-          }); //this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-          //  this.players = players;
-          //if (this.players.find(p => p.email == this.userInfo.email))
-          //  this.router.navigate(['entries'])
-          //})
-          // this.dataService.getEvents().subscribe((events) => {
-          //   if(events !== null && events.length > 0) {
-          //     // this.event = events.sort((a: IEvent, b: IEvent) => {
-          //     //   return a.start.getTime() - b.start.getTime()
-          //     // })[0]
-          //     //this.dataService.setEvent(this.event)
-          //     this.event = events[0]
-          //     var today = new Date();
-          //     this.eventDate = new Date(this.event.start)
-          //     if ( today > this.eventDate ) {
-          //       this.router.navigate(['entries'])
-          //     }
-          //     else {
-          //       var games = new Set(this.info.bets.map(item => item.section))
-          //       games.forEach(g =>
-          //         this.sections.push({
-          //           name: g,
-          //           bets: this.info.bets.filter(i => i.section === g)
-          //         }
-          //       ))
-          //       this.dataService.getPlayers().subscribe((players: IPlayer[])=>{
-          //         this.players = players;
-          //         if (this.players.find(p => p.email == this.userInfo.email))
-          //           this.router.navigate(['entries'])
-          //       })
-          //     }
-          //   }
-          // })
+          });
         }
       }, {
         key: "makeBet",
         value: function makeBet() {
-          this.openDialog();
-          this.newBet = true;
+          var _this6 = this;
+
+          setTimeout(function () {
+            _this6.showLoading = false;
+
+            _this6.openDialog();
+
+            _this6.newBet = true;
+          }, 1000);
         }
       }, {
         key: "seeEntries",
@@ -2500,35 +2496,35 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this6 = this;
+          var _this7 = this;
 
           if (this.isAdmin) {
             this.guesses.forEach(function (guess) {
               guess.answer = guess.guess;
 
-              _this6.dataService.updateBet(guess).subscribe(function (bet) {
+              _this7.dataService.updateBet(guess).subscribe(function (bet) {
                 console.log("Player bet, ", bet);
 
-                _this6.router.navigate(["entries"]);
+                _this7.router.navigate(["entries"]);
               });
             });
           } else {
             if (this.playerAlreadyBet) {
               this.guesses.forEach(function (guess) {
-                guess.playerId = _this6.playerId;
-                guess.groupId = _this6.groupId;
+                guess.playerId = _this7.playerId;
+                guess.groupId = _this7.groupId;
 
-                _this6.dataService.updateBet(guess).subscribe(function (bet) {
+                _this7.dataService.updateBet(guess).subscribe(function (bet) {
                   console.log("Player bet, ", bet);
                 });
               });
               this.router.navigate(["entries"]);
             } else {
               this.guesses.forEach(function (guess) {
-                guess.playerId = _this6.playerId;
-                guess.groupId = _this6.groupId;
+                guess.playerId = _this7.playerId;
+                guess.groupId = _this7.groupId;
 
-                _this6.dataService.insertBet(guess).subscribe(function (bet) {
+                _this7.dataService.insertBet(guess).subscribe(function (bet) {
                   console.log("Player bet, ", bet);
                 });
               });
@@ -2539,9 +2535,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "openDialog",
         value: function openDialog() {
-          var _this7 = this;
+          var _this8 = this;
 
-          this.showLoading = false;
           var dialogConfig = new _angular_material_dialog__WEBPACK_IMPORTED_MODULE_2__["MatDialogConfig"]();
           dialogConfig.disableClose = true;
           dialogConfig.autoFocus = true;
@@ -2552,21 +2547,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.dialogRef.componentInstance.playersGames = this.playersGames;
           this.dialogRef.afterClosed().subscribe(function (data) {
             if (data.gameName != null) {
-              _this7.gameName = data.gameName;
-              _this7.playerName = data.playerName;
-              _this7.groupId = data.gameId;
-              _this7.playerId = data.playerId;
-              _this7.eventName = data.eventName;
-              _this7.eventId = data.eventId;
-              _this7.eventDate = data.eventDate;
-              _this7.playerAlreadyBet = data.playerAlreadyBet;
+              _this8.gameName = data.gameName;
+              _this8.playerName = data.playerName;
+              _this8.groupId = data.gameId;
+              _this8.playerId = data.playerId;
+              _this8.eventName = data.eventName;
+              _this8.eventId = data.eventId;
+              _this8.eventDate = data.eventDate;
+              _this8.playerAlreadyBet = data.playerAlreadyBet;
 
-              if (_this7.gameName == "Submit Picks") {
-                _this7.isAdmin = true;
-                _this7.isDisabled = false;
+              if (_this8.gameName == "Submit Picks") {
+                _this8.isAdmin = true;
+                _this8.isDisabled = false;
               }
             } else {
-              _this7.newBet = false;
+              _this8.newBet = false;
             }
           });
         }
@@ -2685,7 +2680,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this8 = this;
+          var _this9 = this;
 
           this.form = this.formBuilder.group({
             event: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_3__["Validators"].required],
@@ -2695,19 +2690,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           });
           this.dataService.getEvents().subscribe(function (events) {
             if (events !== null && events.length > 1) {
-              _this8.events = events;
+              _this9.events = events;
 
-              _this8.form.get("event").setValue(_this8.events[0]);
+              _this9.form.get("event").setValue(_this9.events[0]);
 
-              _this8.firstEvent = _this8.event = events.sort(function (a, b) {
+              _this9.firstEvent = _this9.event = events.sort(function (a, b) {
                 return new Date(a.start).getTime() - new Date(b.start).getTime();
               })[0];
             } else if (events !== null && events.length == 1) {
-              _this8.events = events;
+              _this9.events = events;
 
-              _this8.form.get("event").setValue(_this8.events[0]);
+              _this9.form.get("event").setValue(_this9.events[0]);
 
-              _this8.event = events[0];
+              _this9.event = events[0];
             } // else {
             //   let event: IEvent = {
             //     _id: '',
@@ -2721,32 +2716,32 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             // }
 
 
-            _this8.dataService.getGames().subscribe(function (games) {
-              _this8.games = games;
+            _this9.dataService.getGames().subscribe(function (games) {
+              _this9.games = games;
             });
 
-            _this8.form.get("name").setValue(_this8.userName);
+            _this9.form.get("name").setValue(_this9.userName);
           });
         }
       }, {
         key: "selecteEvent",
         value: function selecteEvent($event) {
-          var _this9 = this;
+          var _this10 = this;
 
           this.event = this.events.filter(function (i) {
-            return i._id === _this9.selectedEvent._id;
+            return i._id === _this10.selectedEvent._id;
           })[0]; //this.dataService.setEvent(this.event)
         }
       }, {
         key: "selecteGame",
         value: function selecteGame($event) {
-          var _this10 = this;
+          var _this11 = this;
 
           if (this.selectedGame.toString() == "new") {
             this.gameText = "Create New Group";
           } else {
             var game = this.games.filter(function (i) {
-              return i._id === _this10.selectedGame._id;
+              return i._id === _this11.selectedGame._id;
             })[0];
             this.gameId = game._id;
             this.gameText = game.name;
@@ -2760,17 +2755,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "submit",
         value: function submit() {
-          var _this11 = this;
+          var _this12 = this;
 
           Object.keys(this.form.controls).forEach(function (field) {
-            var control = _this11.form.get(field);
+            var control = _this12.form.get(field);
 
             control.markAsTouched({
               onlySelf: true
             });
           });
           var existingPlayerGame = this.playersGames.find(function (p) {
-            return p.email == _this11.userEmail && p.gameId == _this11.gameId;
+            return p.email == _this12.userEmail && p.gameId == _this12.gameId;
           });
 
           if (this.form.valid) {
@@ -2790,28 +2785,28 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               };
               this.dataService.insertGame(game).subscribe(function (game) {
                 console.log("Game created, ", game);
-                _this11.gameId = game._id;
-                _this11.gameText = game.name;
+                _this12.gameId = game._id;
+                _this12.gameText = game.name;
                 var player = {
-                  _id: _this11.existingPlayerId,
-                  email: _this11.userEmail,
-                  name: _this11.form.value.name,
-                  gameId: _this11.gameId
+                  _id: _this12.existingPlayerId,
+                  email: _this12.userEmail,
+                  name: _this12.form.value.name,
+                  gameId: _this12.gameId
                 };
 
-                _this11.dataService.insertPlayer(player).subscribe(function (player) {
+                _this12.dataService.insertPlayer(player).subscribe(function (player) {
                   console.log("Player created, ", player);
                   var data = {
                     playerId: player._id,
                     playerName: player.name,
                     gameId: player.gameId,
-                    gameName: _this11.gameText,
-                    eventId: _this11.event._id,
-                    eventName: _this11.event.name,
-                    eventDate: _this11.event.start
+                    gameName: _this12.gameText,
+                    eventId: _this12.event._id,
+                    eventName: _this12.event.name,
+                    eventDate: _this12.event.start
                   };
 
-                  _this11.dialogRef.close(data);
+                  _this12.dialogRef.close(data);
                 });
               });
             } else {
@@ -2827,13 +2822,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                     playerId: player._id,
                     playerName: player.name,
                     gameId: player.gameId,
-                    gameName: _this11.gameText,
-                    eventId: _this11.event._id,
-                    eventName: _this11.event.name,
-                    eventDate: _this11.event.start
+                    gameName: _this12.gameText,
+                    eventId: _this12.event._id,
+                    eventName: _this12.event.name,
+                    eventDate: _this12.event.start
                   };
 
-                  _this11.dialogRef.close(data);
+                  _this12.dialogRef.close(data);
                 });
               } else {
                 var _player2 = {
@@ -2846,15 +2841,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   var data = {
                     playerId: existingPlayerGame._id,
                     playerName: player.name,
-                    gameId: _this11.gameId,
-                    gameName: _this11.gameText,
-                    eventId: _this11.event._id,
-                    eventName: _this11.event.name,
-                    eventDate: _this11.event.start,
+                    gameId: _this12.gameId,
+                    gameName: _this12.gameText,
+                    eventId: _this12.event._id,
+                    eventName: _this12.event.name,
+                    eventDate: _this12.event.start,
                     playerAlreadyBet: true
                   };
 
-                  _this11.dialogRef.close(data);
+                  _this12.dialogRef.close(data);
                 });
               }
             }
@@ -2897,6 +2892,86 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       /*! ./info-dialog.component.scss */
       "./src/app/form-page/info-dialog/info-dialog.component.scss"))["default"]]
     })], InfoDialogComponent);
+    /***/
+  },
+
+  /***/
+  "./src/app/loading-screen/loading-screen.component.scss":
+  /*!**************************************************************!*\
+    !*** ./src/app/loading-screen/loading-screen.component.scss ***!
+    \**************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppLoadingScreenLoadingScreenComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".loading-overlay {\n  left: 0 !important;\n  top: 0 !important;\n  z-index: 10000 !important;\n  width: 100% !important;\n  height: 100% !important;\n  position: fixed !important;\n  cursor: pointer !important;\n  visibility: visible !important;\n  transition: visibility 0s, opacity 0.4s linear !important;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  cursor: wait !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvbG9hZGluZy1zY3JlZW4vQzpcXFByb2plY3RzXFxhbmd1bGFyIG5vZGVqcyBtb25nb2RiXFxNRUFOLVByb3AtQmV0cy9zcmNcXGFwcFxcbG9hZGluZy1zY3JlZW5cXGxvYWRpbmctc2NyZWVuLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9sb2FkaW5nLXNjcmVlbi9sb2FkaW5nLXNjcmVlbi5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSx5QkFBQTtFQUNBLHNCQUFBO0VBQ0EsdUJBQUE7RUFDQSwwQkFBQTtFQUNBLDBCQUFBO0VBQ0EsOEJBQUE7RUFDQSx5REFBQTtFQUNBLGFBQUE7RUFDQSxtQkFBQTtFQUNBLHVCQUFBO0VBQ0EsdUJBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL2xvYWRpbmctc2NyZWVuL2xvYWRpbmctc2NyZWVuLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmxvYWRpbmctb3ZlcmxheSB7XHJcbiAgbGVmdDogMCAhaW1wb3J0YW50O1xyXG4gIHRvcDogMCAhaW1wb3J0YW50O1xyXG4gIHotaW5kZXg6IDEwMDAwICFpbXBvcnRhbnQ7XHJcbiAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcclxuICBoZWlnaHQ6IDEwMCUgIWltcG9ydGFudDtcclxuICBwb3NpdGlvbjogZml4ZWQgIWltcG9ydGFudDtcclxuICBjdXJzb3I6IHBvaW50ZXIgIWltcG9ydGFudDtcclxuICB2aXNpYmlsaXR5OiB2aXNpYmxlICFpbXBvcnRhbnQ7XHJcbiAgdHJhbnNpdGlvbjogdmlzaWJpbGl0eSAwcywgb3BhY2l0eSAwLjRzIGxpbmVhciAhaW1wb3J0YW50O1xyXG4gIGRpc3BsYXk6IGZsZXg7XHJcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcclxuICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICBjdXJzb3I6IHdhaXQgIWltcG9ydGFudDtcclxufVxyXG4iLCIubG9hZGluZy1vdmVybGF5IHtcbiAgbGVmdDogMCAhaW1wb3J0YW50O1xuICB0b3A6IDAgIWltcG9ydGFudDtcbiAgei1pbmRleDogMTAwMDAgIWltcG9ydGFudDtcbiAgd2lkdGg6IDEwMCUgIWltcG9ydGFudDtcbiAgaGVpZ2h0OiAxMDAlICFpbXBvcnRhbnQ7XG4gIHBvc2l0aW9uOiBmaXhlZCAhaW1wb3J0YW50O1xuICBjdXJzb3I6IHBvaW50ZXIgIWltcG9ydGFudDtcbiAgdmlzaWJpbGl0eTogdmlzaWJsZSAhaW1wb3J0YW50O1xuICB0cmFuc2l0aW9uOiB2aXNpYmlsaXR5IDBzLCBvcGFjaXR5IDAuNHMgbGluZWFyICFpbXBvcnRhbnQ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBjdXJzb3I6IHdhaXQgIWltcG9ydGFudDtcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/loading-screen/loading-screen.component.ts":
+  /*!************************************************************!*\
+    !*** ./src/app/loading-screen/loading-screen.component.ts ***!
+    \************************************************************/
+
+  /*! exports provided: LoadingScreenComponent */
+
+  /***/
+  function srcAppLoadingScreenLoadingScreenComponentTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "LoadingScreenComponent", function () {
+      return LoadingScreenComponent;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var LoadingScreenComponent = /*#__PURE__*/function () {
+      function LoadingScreenComponent() {
+        _classCallCheck(this, LoadingScreenComponent);
+
+        this.loadingContent = "";
+      }
+
+      _createClass(LoadingScreenComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return LoadingScreenComponent;
+    }();
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])()], LoadingScreenComponent.prototype, "loadingContent", void 0);
+    LoadingScreenComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'loading-screen',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./loading-screen.component.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/loading-screen/loading-screen.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./loading-screen.component.scss */
+      "./src/app/loading-screen/loading-screen.component.scss"))["default"]]
+    })], LoadingScreenComponent);
     /***/
   },
 
@@ -2984,15 +3059,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
-  "./src/app/register/register.component.ts":
-  /*!************************************************!*\
-    !*** ./src/app/register/register.component.ts ***!
-    \************************************************/
+  "./src/app/register-page/register.component.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/register-page/register.component.ts ***!
+    \*****************************************************/
 
   /*! exports provided: RegisterComponent */
 
   /***/
-  function srcAppRegisterRegisterComponentTs(module, __webpack_exports__, __webpack_require__) {
+  function srcAppRegisterPageRegisterComponentTs(module, __webpack_exports__, __webpack_require__) {
     "use strict";
 
     __webpack_require__.r(__webpack_exports__);
@@ -3052,7 +3127,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./register.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.component.html"))["default"]
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html"))["default"]
     })], RegisterComponent);
     /***/
   },
@@ -3122,9 +3197,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     "./src/app/core/data.service.ts");
 
     var ReviewPageComponent = /*#__PURE__*/function () {
-      //private dataServiceSubscription: Subscription
-      function ReviewPageComponent( //private mySqlService: MySqlService, 
-      router, dataService, route) {
+      function ReviewPageComponent(router, dataService, route) {
         _classCallCheck(this, ReviewPageComponent);
 
         this.router = router;
@@ -3133,41 +3206,45 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.isDisabled = true;
         this.guesses = [];
         this.displayedColumns = ['question', 'guess', 'answer', 'check'];
+        this.showLoading = true;
       }
 
       _createClass(ReviewPageComponent, [{
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {//this.dataServiceSubscription.unsubscribe()
-        }
-      }, {
-        key: "ngOnInit",
-        value: function ngOnInit() {
-          var _this12 = this;
+        key: "ngAfterViewInit",
+        value: function ngAfterViewInit() {
+          var _this13 = this;
 
           this.dataService.getEvents().subscribe(function (events) {
             if (events !== null) {
               var sortedEvents = events.sort(function (a, b) {
                 return new Date(a.start) - new Date(b.start);
               });
-              _this12.event = sortedEvents[0];
+              _this13.event = sortedEvents[0];
             }
           });
           this.route.queryParams.subscribe(function (params) {
-            _this12.playerId = params['id'];
-            _this12.playerName = params['playerName'];
-            _this12.groupId = params['groupId'];
-            _this12.groupName = params['groupName'];
+            _this13.playerId = params['id'];
+            _this13.playerName = params['playerName'];
+            _this13.groupId = params['groupId'];
+            _this13.groupName = params['groupName'];
           });
           this.dataService.getBets().subscribe(function (bets) {
-            _this12.bets = bets.filter(function (bet) {
-              return bet.playerId === _this12.playerId;
+            _this13.bets = bets.filter(function (bet) {
+              return bet.playerId === _this13.playerId;
             });
 
-            var rightPicks = _this12.bets.filter(function (item) {
+            var rightPicks = _this13.bets.filter(function (item) {
               return item.guess == item.answer;
             });
 
-            _this12.results = rightPicks.length + "/" + _this12.bets.length;
+            var finishedPicks = _this13.bets.filter(function (item) {
+              return item.answer;
+            });
+
+            _this13.results = rightPicks.length + "/" + finishedPicks.length;
+            setTimeout(function () {
+              _this13.showLoading = false;
+            }, 1000);
           });
         }
       }, {

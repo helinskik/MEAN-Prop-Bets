@@ -18,13 +18,14 @@ import { InfoDialogComponent } from './form-page/info-dialog/info-dialog.compone
 import { HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
 import { EntriesPageComponent } from './entries-page/entries-page.component';
 import { ReviewPageComponent } from './review-page/review-page.component';
+import { LoadingScreenComponent } from './loading-screen/loading-screen.component';
 import { CoreModule }   from './core/core.module';
 import { SharedModule }   from './shared/shared.module';
 //import { SigninRedirectCallbackComponent } from './redirects/signin-redirect-callback.component'
 //import { SignoutRedirectCallbackComponent } from './redirects/signout-redirect-callback.component'
 import { AuthModule } from '@auth0/auth0-angular';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './register-page/register.component';
 import { AuthGuardService } from './auth-guard.service';
 
 @NgModule({
@@ -62,7 +63,8 @@ import { AuthGuardService } from './auth-guard.service';
     EntriesPageComponent,
     ReviewPageComponent,
     NavBarComponent,
-    RegisterComponent ],
+    RegisterComponent,
+    LoadingScreenComponent ],
   bootstrap:    [ AppComponent ],
   providers: [
     AuthGuardService

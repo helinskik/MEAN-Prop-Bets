@@ -1,4 +1,8 @@
-<div class="container-fluid">
+<div *ngIf="showLoading" class="container-fluid">
+  <loading-screen loadingContent="Please wait while bets load..." ></loading-screen>
+</div>
+
+<div *ngIf="!showLoading" class="container-fluid">
     <h2 class="d-flex justify-content-center mat-display-1" style="margin: 25px 0 25px;">{{event?.name}}</h2>
     <div class="navbar-header d-flex justify-content-center">
         <p>Group: {{groupName}}</p>
@@ -12,7 +16,7 @@
           
             <!-- question Column -->
             <ng-container matColumnDef="question">
-              <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Bet </th>
+              <th mat-header-cell *matHeaderCellDef style="text-align: center; width: 50%;"> Bet </th>
               <td mat-cell *matCellDef="let element" style="text-align: left;"> {{element.questionText}} </td>
               <td mat-footer-cell *matFooterCellDef></td>
             </ng-container>

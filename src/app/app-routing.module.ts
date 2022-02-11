@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FormPageComponent } from './form-page/form-page.component'
 import { EntriesPageComponent } from './entries-page/entries-page.component'
 import { ReviewPageComponent } from './review-page/review-page.component'
-import { RegisterComponent } from './register/register.component'
+import { RegisterComponent } from './register-page/register.component'
 
 const routes: Routes = [
   {

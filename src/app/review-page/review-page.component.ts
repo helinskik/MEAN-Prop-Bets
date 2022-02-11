@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 import { DataService } from '../core/data.service';
 import { IBet, IEvent, IGame, IPlayer } from '../shared/interfaces';
@@ -8,7 +8,7 @@ import { IBet, IEvent, IGame, IPlayer } from '../shared/interfaces';
   templateUrl: './review-page.component.html',
   styleUrls: ['./review-page.component.scss']
 })
-export class ReviewPageComponent implements OnInit {
+export class ReviewPageComponent {
 
   public groupName
   public playerName
@@ -23,18 +23,14 @@ export class ReviewPageComponent implements OnInit {
   games:  IGame[]
   public event: IEvent
   public displayedColumns: string[] = ['question', 'guess', 'answer', 'check'];
-  //private dataServiceSubscription: Subscription
+  public showLoading: boolean = true
 
-   constructor(    //private mySqlService: MySqlService, 
+   constructor(
     private router: Router,
     private dataService: DataService,
     private route: ActivatedRoute) { }
 
-  ngOnDestroy(): void {
-    //this.dataServiceSubscription.unsubscribe()
-  }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     this.dataService.getEvents().subscribe((events) => {
       if(events !== null) {
         let sortedEvents = events.sort((a, b) => {
@@ -59,8 +55,16 @@ export class ReviewPageComponent implements OnInit {
         let rightPicks = this.bets.filter(
           item => item.guess == item.answer
         )
+
+        let finishedPicks = this.bets.filter(
+          item => item.answer
+        )
     
-        this.results = rightPicks.length + "/" + this.bets.length
+        this.results = rightPicks.length + "/" + finishedPicks.length
+
+        setTimeout(()=>{
+          this.showLoading = false
+        },1000)
       })
   }
 

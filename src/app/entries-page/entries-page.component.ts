@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, AfterViewInit } from "@angular/core";
 import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { DataService } from "../core/data.service";
@@ -10,7 +10,7 @@ import * as queryString from "query-string";
   templateUrl: "./entries-page.component.html",
   styleUrls: ["./entries-page.component.scss"],
 })
-export class EntriesPageComponent implements OnInit {
+export class EntriesPageComponent {
   public selectedValue: IGame;
   public games: IGame[] = [];
   public event: IEvent;
@@ -24,32 +24,29 @@ export class EntriesPageComponent implements OnInit {
   public numBets: string;
   public isLive: boolean = false;
   public userInfo
+  public showLoading : boolean = true
+
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
     private router: Router
   ) {}
 
-  ngOnDestroy(): void {
-    //this.dataServiceSubscription.unsubscribe()
-  }
-
-  ngOnInit(): void {
+  ngAfterViewInit(): void {
     const urlParams = queryString.parse(window.location.search);
     if (urlParams.error) {
       console.log(`An error occurred: ${urlParams.error}`);
     } else {
-      //this.dataService.getPlayers().subscribe((players) => {
-      //  this.players = players;
-
         let um = window.localStorage.getItem("um");
         let un = window.localStorage.getItem("un");
         if (um && un) {
-          //this.playersGames = this.players.filter(p => p.email == um)
           this.userInfo = {
             email: um,
             name: un
           }
+          setTimeout(()=>{
+            this.showLoading = false
+          },1000)
         } else if (urlParams.code) {
             this.dataService
               .getRegisteration(urlParams.code)
@@ -58,14 +55,15 @@ export class EntriesPageComponent implements OnInit {
                   this.userInfo = info;
                   window.localStorage.setItem("um", this.userInfo.email);
                   window.localStorage.setItem("un", this.userInfo.name);
-                  //this.playersGames = this.players.filter(p => p.email == this.userInfo.email)
+                  setTimeout(()=>{
+                    this.showLoading = false
+                  },1000)
                 });
               });
           }
         else {
           this.router.navigate(['register'])
         }
-      //});
     }
 
     this.dataService.getEvents().subscribe((events) => {
