@@ -12,7 +12,7 @@ export class RegisterComponent {
   register() {
     const stringifiedParams = queryString.stringify({
       client_id: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com',
-      redirect_uri: 'http://localhost:8080/entries',
+      redirect_uri: 'https://vast-badlands-87144.herokuapp.com/entries',
       scope: [
         'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/userinfo.profile',
