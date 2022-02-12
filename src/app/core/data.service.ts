@@ -32,7 +32,7 @@ export class DataService {
     var data = {
       client_id: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com',//process.env.APP_ID_GOES_HERE,
       client_secret: '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',//process.env.APP_SECRET_GOES_HERE,
-      redirect_uri: 'http://localhost:8080/entries',
+      redirect_uri: 'https://vast-badlands-87144.herokuapp.com/entries',
       grant_type: 'authorization_code',
       code: code
     }

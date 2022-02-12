@@ -3,7 +3,7 @@ import { google } from 'googleapis';
 const googleConfig = {
   clientId: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com', // e.g. asdfghjkljhgfdsghjk.apps.googleusercontent.com
   clientSecret: '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', // e.g. _ASDFA%DFASDFASDFASD#FAD-
-  redirect: 'http://localhost:8080/entries' // this must match your google api settings
+  redirect: 'https://vast-badlands-87144.herokuapp.com/entries' // this must match your google api settings
 };
 
 const defaultScope = [
