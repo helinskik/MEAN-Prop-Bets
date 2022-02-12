@@ -78,7 +78,7 @@ class BetsController {
         console.log('*** req.body');
         console.log(req.body);
 
-        betsRepo.updateBet(req.params.id, req.body, (err, bet) => {
+        betsRepo.updateBet(req.body, (err, bet) => {
             if (err) {
                 console.log('*** updateBet error: ' + util.inspect(err));
                 res.json({ status: false, error: 'Update failed', bet: null });

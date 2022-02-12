@@ -1,0 +1,479 @@
+ [
+      {
+        "id": "anthem",
+        "section": "Time",
+        "q": "1:35.50 min:sec.ms National Anthem length Mickey Guyton",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "halftime",
+        "section": "Time",
+        "q": "32:00 (min:sec) Halftime length",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "gametime",
+        "section": "Time",
+        "q": "3:34 (hr:min) Game time length",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "coin",
+        "section": "Coin Toss",
+        "q": "Heads or Tails",
+        "a1": "Heads",
+        "a2": "Tails"
+      },
+      {
+        "id": "coinwinner",
+        "section": "Coin Toss",
+        "q": "Winner of coin toss",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "gp1q",
+        "section": "Game Points",
+        "q": "1st quarter: 9.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "gp2q",
+        "section": "Game Points",
+        "q": "2nd quarter: 13.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "gp3q",
+        "section": "Game Points",
+        "q": "3rd quarter: 9.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "gp4q",
+        "section": "Game Points",
+        "q": "4th quarter: 13.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "gpt",
+        "section": "Game Points",
+        "q": "Game total: 48.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "tds",
+        "section": "Game Stats",
+        "q": "Touchdowns: 5.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "fg",
+        "section": "Game Stats",
+        "q": "Field Goals: 3.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "int",
+        "section": "Game Stats",
+        "q": "Interceptions: 1.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "fum",
+        "section": "Game Stats",
+        "q": "Fumbles lost: 1.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "sacks",
+        "section": "Game Stats",
+        "q": "Sacks: 4.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "punts",
+        "section": "Game Stats",
+        "q": "Punts: 6.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "kr",
+        "section": "Game Stats",
+        "q": "Kickoff returns: 5.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "cam",
+        "section": "Player Stats",
+        "q": "Cam Akers rushing yards: 68.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "stafford",
+        "section": "Player Stats",
+        "q": "Mattew Stafford completions: 24.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "kuppyards",
+        "section": "Player Stats",
+        "q": "Cooper Kupp receiving yards: 107.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "obj",
+        "section": "Player Stats",
+        "q": "Odell Beckham Jr receptions: 5.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "kuppreceptions",
+        "section": "Player Stats",
+        "q": "Cooper Kupp receptions: 8.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "sony",
+        "section": "Player Stats",
+        "q": "Sony Michel TDs: 0.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "Van Jefferson",
+        "section": "Player Stats",
+        "q": "Van Jefferson receiving yards: 31.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "mixon",
+        "section": "Player Stats",
+        "q": "Joe Mixon rushing yards: 62.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "burrow",
+        "section": "Player Stats",
+        "q": "Joe Burrow TD passes: 2.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "jamarr",
+        "section": "Player Stats",
+        "q": "Ja'Marr Chase receiving yards: 82.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "tee",
+        "section": "Player Stats",
+        "q": "Tee Higgins receptions: 5.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "burrowrush",
+        "section": "Player Stats",
+        "q": "Joe Burrow rushing yards: 38.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "boyd",
+        "section": "Player Stats",
+        "q": "Tyler Boyd receiving yards: 38.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "perine",
+        "section": "Player Stats",
+        "q": "Samaje Perine receptions: 1.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "tdfirst",
+        "section": "LA or CIN",
+        "q": "TD first",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "fgfirst",
+        "section": "LA or CIN",
+        "q": "Field goal first",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "turnoverfirst",
+        "section": "LA or CIN",
+        "q": "Turnover first",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "timeoutfirst",
+        "section": "LA or CIN",
+        "q": "Timeout first",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "puntfirst",
+        "section": "LA or CIN",
+        "q": "Punt first",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "sbchamp",
+        "section": "LA or CIN",
+        "q": "SUPERBOWL CHAMPION",
+        "a1": "LA",
+        "a2": "CIN"
+      },
+      {
+        "id": "kickofftb",
+        "section": "Yes or No",
+        "q": "First kickoff is a touchback",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "firstoplay",
+        "section": "Yes or No",
+        "q": "First offensive play is a rushing attempt",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "specialtd",
+        "section": "Yes or No",
+        "q": "Special teams or defensive TD",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "kickers",
+        "section": "Yes or No",
+        "q": "Evan McPherson scores more points than Matt Gay",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "twopoint",
+        "section": "Yes or No",
+        "q": "Successful 2 point conversion",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "missedextra",
+        "section": "Yes or No",
+        "q": "Missed extra point",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "loganint",
+        "section": "Yes or No",
+        "q": "Will Logan Wilson (CIN) intercept a pass",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "onside",
+        "section": "Yes or No",
+        "q": "Onside kick attempted",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "cinchallenge",
+        "section": "Yes or No",
+        "q": "Bengals use Coaches Challenge first",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "lascores",
+        "section": "Yes or No",
+        "q": "Los Angles scores in all 4 quarters",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "pointsunder",
+        "section": "Yes or No",
+        "q": "Points scored with under 1 minute of the first half",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "lalead",
+        "section": "Yes or No",
+        "q": "Will Los Angeles have the lead at halftime",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "joetd4",
+        "section": "Yes or No",
+        "q": "Joe Burrow throws TD pass in 4th",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "fourthcon",
+        "section": "Yes or No",
+        "q": "4th down conversion for TD",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "leadchange",
+        "section": "Yes or No",
+        "q": "Will there be a lead change in the 4th",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "staffordint",
+        "section": "Yes or No",
+        "q": "Matthew Stafford throws an INT",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "longtd",
+        "section": "Yes or No",
+        "q": "Longest TD of the game for over 42 yeards",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "points2",
+        "section": "Yes or No",
+        "q": "Points scored with under 2 minutes left in game",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "ot",
+        "section": "Yes or No",
+        "q": "Will game go to overtime",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "laspread",
+        "section": "Yes or No",
+        "q": "Los Angeles covers spread (-4.5)",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "jerseytd",
+        "section": "Odd or Even",
+        "q": "Jersey number of player with first TD",
+        "a1": "Odd",
+        "a2": "Even"
+      },
+      {
+        "id": "combinedto",
+        "section": "Odd or Even",
+        "q": "Combined unused timeouts at halftime",
+        "a1": "Odd",
+        "a2": "Even"
+      },
+      {
+        "id": "combinescore",
+        "section": "Odd or Even",
+        "q": "Combined total score",
+        "a1": "Odd",
+        "a2": "Even"
+      },
+      {
+        "id": "performfirst",
+        "section": "Halftime Show",
+        "q": "Mary J. Blige performs first",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "eminemlose",
+        "section": "Halftime Show",
+        "q": "Eminem sings Lose Yourself",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "snoopsmokes",
+        "section": "Halftime Show",
+        "q": "Snoop Dogg smokes and sings The Next Episode",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "kenlamar",
+        "section": "Halftime Show",
+        "q": "Kendrick Lamar sings HUMBLE",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "drdre",
+        "section": "Halftime Show",
+        "q": "Dr. Dre sings California Love",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "firstcomm",
+        "section": "Commercials",
+        "q": "First commercial break contains a car commercial",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "cheetos",
+        "section": "Commercials",
+        "q": "Cheetos commercial before Pringles commercial",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "capmor",
+        "section": "Commercials",
+        "q": "Captain Morgan commercial before BMW commercial",
+        "a1": "Yes",
+        "a2": "No"
+      }
+      
+    ]

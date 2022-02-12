@@ -33,38 +33,46 @@ export class EntriesPageComponent {
   ) {}
 
   ngAfterViewInit(): void {
-    const urlParams = queryString.parse(window.location.search);
-    if (urlParams.error) {
-      console.log(`An error occurred: ${urlParams.error}`);
-    } else {
-        let um = window.localStorage.getItem("um");
-        let un = window.localStorage.getItem("un");
-        if (um && un) {
-          this.userInfo = {
-            email: um,
-            name: un
-          }
-          setTimeout(()=>{
-            this.showLoading = false
-          },1000)
-        } else if (urlParams.code) {
-            this.dataService
-              .getRegisteration(urlParams.code)
-              .subscribe((token) => {
-                this.dataService.getUserInfo(token.access_token).subscribe((info) => {
-                  this.userInfo = info;
-                  window.localStorage.setItem("um", this.userInfo.email);
-                  window.localStorage.setItem("un", this.userInfo.name);
-                  setTimeout(()=>{
-                    this.showLoading = false
-                  },1000)
-                });
-              });
-          }
-        else {
-          this.router.navigate(['register'])
+      let um = window.localStorage.getItem("um");
+      let un = window.localStorage.getItem("un");
+      if (um && un) {
+        this.userInfo = {
+          email: um,
+          name: un
         }
-    }
+      }
+    // const urlParams = queryString.parse(window.location.search);
+    // if (urlParams.error) {
+    //   console.log(`An error occurred: ${urlParams.error}`);
+    // } else {
+    //     let um = window.localStorage.getItem("um");
+    //     let un = window.localStorage.getItem("un");
+    //     if (um && un) {
+    //       this.userInfo = {
+    //         email: um,
+    //         name: un
+    //       }
+    //       setTimeout(()=>{
+    //         this.showLoading = false
+    //       },1000)
+    //     } else if (urlParams.code) {
+    //         this.dataService
+    //           .getRegisteration(urlParams.code)
+    //           .subscribe((token) => {
+    //             this.dataService.getUserInfo(token.access_token).subscribe((info) => {
+    //               this.userInfo = info;
+    //               window.localStorage.setItem("um", this.userInfo.email);
+    //               window.localStorage.setItem("un", this.userInfo.name);
+    //               setTimeout(()=>{
+    //                 this.showLoading = false
+    //               },1000)
+    //             });
+    //           });
+    //       }
+    //     else {
+    //       this.router.navigate(['register'])
+    //     }
+    // }
 
     this.dataService.getEvents().subscribe((events) => {
       if (events !== null && events.length > 1) {
@@ -82,6 +90,9 @@ export class EntriesPageComponent {
 
       this.dataService.getGames().subscribe((games: IGame[]) => {
         this.games = games;
+        setTimeout(()=>{
+            this.showLoading = false
+        },100)
       });
     });
 

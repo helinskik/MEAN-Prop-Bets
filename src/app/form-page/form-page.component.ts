@@ -5,6 +5,7 @@ import { InfoDialogComponent } from "./info-dialog/info-dialog.component";
 import { Router } from "@angular/router";
 import { DataService } from "../core/data.service";
 import { IBet, IEvent, IGame, IPlayer } from "../shared/interfaces";
+import * as data from "./bets.copy.json"
 
 @Component({
   selector: "form-page",
@@ -13,45 +14,7 @@ import { IBet, IEvent, IGame, IPlayer } from "../shared/interfaces";
 })
 export class FormPageComponent {
   public sections = [];
-  public info = {
-    bets: [
-      {
-        id: "anthem",
-        section: "Time",
-        q: "2:00 (min:sec) Demi Lovato anthem length",
-        a1: "Over",
-        a2: "Under",
-      },
-      {
-        id: "halftime",
-        section: "Time",
-        q: "32:00 (min:sec) Halftime length",
-        a1: "Over",
-        a2: "Under",
-      },
-      {
-        id: "gametime",
-        section: "Time",
-        q: "3:34 (hr:min) Game time length",
-        a1: "Over",
-        a2: "Under",
-      },
-      {
-        id: "coin",
-        section: "Coin Toss",
-        q: "Heads or Tails",
-        a1: "Heads",
-        a2: "Tails",
-      },
-      {
-        id: "coinwinner",
-        section: "Coin Toss",
-        q: "Winner of coin toss",
-        a1: "SF",
-        a2: "KC",
-      },
-    ],
-  };
+  public info:  any  = (data  as  any).default
   public dialogRef;
   public gameName;
   public playerName;
@@ -104,13 +67,20 @@ export class FormPageComponent {
       }
     });
 
-    var games = new Set(this.info.bets.map((item) => item.section));
+    var games = new Set(this.info.map((item) => item.section));
     games.forEach((g) =>
       this.sections.push({
         name: g,
-        bets: this.info.bets.filter((i) => i.section === g),
+        bets: this.info.filter((i) => i.section === g),
       })
     );
+  }
+
+  isSpecialBet(bet) {
+    if(bet.id == "finalscore" || bet.id == "mvp" || bet.id == "gatorade")
+      return false
+    else
+      return true
   }
 
   makeBet() {
@@ -139,7 +109,7 @@ export class FormPageComponent {
     }
 
     if (!found) {
-      let questionText = this.info.bets.filter((i) => i.id === question)[0].q;
+      let questionText = this.info.filter((i) => i.id === question)[0].q;
       let newBet: IBet = {
         _id: "0",
         question: question,
@@ -153,39 +123,74 @@ export class FormPageComponent {
       this.guesses.push(newBet);
     }
 
-    if (this.info.bets.length == this.guesses.length || this.isAdmin) {
+    if (this.info.length == this.guesses.length || this.isAdmin) {
       this.isDisabled = false;
     }
   }
 
   submit(): void {
+    this.showLoading = true
     if (this.isAdmin) {
       this.guesses.forEach((guess) => {
         guess.answer = guess.guess;
-        this.dataService.updateBet(guess).subscribe((bet: IBet) => {
-          console.log("Player bet, ", bet);
-          this.router.navigate(["entries"]);
+      });
+      this.dataService.updateBet(this.guesses).subscribe((data) => {
+        this.dataService.getBets().subscribe((bets) => {
+          this.dataService.getPlayers().subscribe((players) => {
+            players.forEach(player => {
+              let playerbets = bets.filter(bet => bet.playerId === player._id)
+
+              let rightPicks = playerbets.filter(
+                item => item.guess == item.answer
+              )
+              let finishedPicks = playerbets.filter(
+                item => item.answer
+              )
+          
+              player.record = rightPicks.length + "/" + finishedPicks.length
+
+              this.dataService.updatePlayer(player).subscribe((player: IPlayer) => {
+              });
+            })
+            this.router.navigate(["entries"]);
+          });
         });
       });
     } else {
       if (this.playerAlreadyBet) {
-        this.guesses.forEach((guess) => {
-          guess.playerId = this.playerId
-          guess.groupId = this.groupId
-          this.dataService.updateBet(guess).subscribe((bet: IBet) => {
-            console.log("Player bet, ", bet);
+        this.dataService.deleteBet(this.playerId+','+this.groupId+','+this.eventId).subscribe((data) => {
+          this.guesses.forEach((guess) => {
+            guess.playerId = this.playerId
+            guess.groupId = this.groupId
+            guess._id = null
+          });
+          this.dataService.insertBet(this.guesses).subscribe((data) => {
+            this.router.navigate(["/review"], {
+              queryParams: {
+                id: this.playerId,
+                playerName: this.playerName,
+                groupId: this.groupId,
+                groupName: this.gameName,
+              },
+            });
           });
         });
-        this.router.navigate(["entries"]);
       } else {
         this.guesses.forEach((guess) => {
           guess.playerId = this.playerId
           guess.groupId = this.groupId
-          this.dataService.insertBet(guess).subscribe((bet: IBet) => {
-            console.log("Player bet, ", bet);
+          guess._id = null
+        });
+        this.dataService.insertBet(this.guesses).subscribe((data) => {
+          this.router.navigate(["/review"], {
+            queryParams: {
+              id: this.playerId,
+              playerName: this.playerName,
+              groupId: this.groupId,
+              groupName: this.gameName,
+            },
           });
         });
-        this.router.navigate(["entries"]);
       }
     }
   }

@@ -91,7 +91,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Record </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Score </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mt-3 mb-3 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center section-header\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -131,7 +131,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "\n<mat-dialog-content>\n    <h1 mat-dialog-title class=\"d-flex justify-content-center\">Create Entry</h1>\n    \n    <form class=\"form-horizontal\" [formGroup]=\"form\" (submit)=\"submit()\">\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Event</h2>\n        <p>Pick the event you want to place bets on.</p>\n        <mat-form-field style=\"margin-right: 20px;\">\n            <mat-label>Event</mat-label>\n            <mat-select [(ngModel)]=\"selectedEvent\" name=\"event\" id=\"event\" #event formControlName=\"event\" [ngClass]=\"displayFieldCss('event')\" (selectionChange)=\"selecteEvent($event)\"> \n                <mat-option *ngFor=\"let event of events\" [value]=\"event\">\n                    {{event.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Group</h2>\n        <p>Select the group of people you are playing with or create a new one.</p>\n        <mat-form-field style=\"margin-right: 20px;\">\n            <mat-label>Group</mat-label>\n            <mat-select [(ngModel)]=\"selectedGame\" name=\"game\" id=\"game\" #game formControlName=\"game\" [ngClass]=\"displayFieldCss('game')\" (selectionChange)=\"selecteGame($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                    {{game.name}}\n                </mat-option>\n                <mat-option value=\"new\">\n                    Create New Group\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        \n        <mat-form-field *ngIf=\"gameText == 'Create New Group'\">\n            <input matInput placeholder=\"Group Name\" formControlName=\"group\" formControlName=\"group\" [ngClass]=\"displayFieldCss('game')\">\n        </mat-form-field>\n\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Name</h2>\n        <p>Enter your name for the entry.</p>\n        <mat-form-field>\n            <input matInput placeholder=\"Name\" formControlName=\"name\" formControlName=\"name\" [ngClass]=\"displayFieldCss('name')\">\n        </mat-form-field>\n\n        <mat-dialog-actions class=\"d-flex justify-content-center\">\n            <button type=\"submit\" mat-raised-button color=\"primary\">Enter</button>\n            <button mat-raised-button color=\"secondary\" (click)=\"close()\">Close</button>\n        </mat-dialog-actions>\n    </form>\n</mat-dialog-content>";
+    __webpack_exports__["default"] = "\n<mat-dialog-content>\n    <h1 mat-dialog-title class=\"d-flex justify-content-center\">Create Entry</h1>\n    \n    <form class=\"form-horizontal\" [formGroup]=\"form\" (submit)=\"submit()\">\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Event</h2>\n        <p>Pick the event you want to place bets on.</p>\n        <mat-form-field style=\"margin-right: 20px;\">\n            <mat-label>Event</mat-label>\n            <mat-select [(ngModel)]=\"selectedEvent\" name=\"event\" id=\"event\" #event formControlName=\"event\" [ngClass]=\"displayFieldCss('event')\" (selectionChange)=\"selecteEvent($event)\"> \n                <mat-option *ngFor=\"let event of events\" [value]=\"event\">\n                    {{event.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Group</h2>\n        <p>Select the group of people you are playing with or create a new one.</p>\n        <mat-form-field style=\"margin-right: 20px;\">\n            <mat-label>Group</mat-label>\n            <mat-select [(ngModel)]=\"selectedGame\" name=\"game\" id=\"game\" #game formControlName=\"game\" [ngClass]=\"displayFieldCss('game')\" (selectionChange)=\"selecteGame($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                    {{game.name}}\n                </mat-option>\n                <mat-option value=\"new\">\n                    Create New Group\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n        \n        <mat-form-field *ngIf=\"gameText == 'Create New Group'\">\n            <input matInput placeholder=\"Group Name\" formControlName=\"group\" formControlName=\"group\" [ngClass]=\"displayFieldCss('game')\" autocomplete=\"off\">\n        </mat-form-field>\n\n        <h2 mat-dialog-title style=\"padding-top: 25px;\">Name</h2>\n        <p>Enter your name for the entry.</p>\n        <mat-form-field>\n            <input matInput placeholder=\"Name\" formControlName=\"name\" formControlName=\"name\" [ngClass]=\"displayFieldCss('name')\" autocomplete=\"off\">\n        </mat-form-field>\n\n        <mat-dialog-actions class=\"d-flex justify-content-center\">\n            <button type=\"submit\" mat-raised-button color=\"primary\">Enter</button>\n            <button mat-raised-button color=\"secondary\" (click)=\"close()\">Close</button>\n        </mat-dialog-actions>\n    </form>\n</mat-dialog-content>";
     /***/
   },
 
@@ -171,7 +171,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav>\n    <mat-toolbar color=\"primary\" style=\"height: auto;\">\n        <ul class=\"nav navbar-nav navbar-right\">\n            <!-- <li *ngIf=\"!auth.isLoggedIn()\"><a [href]=\"googleLoginUrl\">Sign in</a></li> -->\n            <!-- <li *ngIf=\"auth.isLoggedIn()\"><a routerLink=\"/profile\">{{ auth.getUserDetails()?.name }}</a></li>\n            <li *ngIf=\"auth.isLoggedIn()\"><a (click)=\"auth.logout()\">Logout</a></li> -->\n        </ul>\n        <!-- <span class=\"navbar-fill\" style=\"float: right;\">\n            <div *ngIf=\"isLoggedIn\" style=\"padding: 10px; width: 100%;\">{{user?.profile.nickname}}</div>\n            <button *ngIf=\"isLoggedIn\" mat-button routerLink=\"/projects\">My Bets</button>\n            <button *ngIf=\"!isLoggedIn\" mat-button (click)=\"login()\">Login</button>\n            <button *ngIf=\"isLoggedIn\" mat-button (click)=\"logout()\">Logout</button>\n        </span> -->\n    </mat-toolbar>\n</nav>";
+    __webpack_exports__["default"] = "<nav>\n    <mat-toolbar color=\"primary\" style=\"height: auto; padding-top: 10px;\">\n        <ul class=\"nav navbar-nav navbar-right\" style=\"flex-direction:row; width: 100%;\">\n            <!-- <li *ngIf=\"!isLoggedIn\" style=\"width: 100%; text-align: right;\"><a (click)=\"login()\">Register Now</a></li> -->\n            <li *ngIf=\"isLoggedIn\" style=\"width: 70%; text-align: left;\"><p>{{ userName }}</p></li>\n            <li *ngIf=\"isLoggedIn\"><a (click)=\"logout()\" style=\"width: 70%; text-align: right;\">Logout</a></li>\n        </ul>\n    </mat-toolbar>\n</nav>";
     /***/
   },
 
@@ -1626,8 +1626,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }, {
         key: "updateBet",
-        value: function updateBet(bet) {
-          return this.http.put(this.betUrl + '/' + bet._id, bet, {
+        value: function updateBet(bets) {
+          return this.http.put(this.betUrl + '/update', bets, {
             headers: this.headers
           }).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["map"])(function (data) {
             console.log('update bet status: ' + data.status);
@@ -2085,16 +2085,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _core_data_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! ../core/data.service */
     "./src/app/core/data.service.ts");
-    /* harmony import */
-
-
-    var query_string__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
-    /*! query-string */
-    "./node_modules/query-string/index.js");
-    /* harmony import */
-
-
-    var query_string__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_5__);
 
     var EntriesPageComponent = /*#__PURE__*/function () {
       function EntriesPageComponent(formBuilder, dataService, router) {
@@ -2117,37 +2107,47 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function ngAfterViewInit() {
           var _this2 = this;
 
-          var urlParams = query_string__WEBPACK_IMPORTED_MODULE_5__["parse"](window.location.search);
+          var um = window.localStorage.getItem("um");
+          var un = window.localStorage.getItem("un");
 
-          if (urlParams.error) {
-            console.log("An error occurred: ".concat(urlParams.error));
-          } else {
-            var um = window.localStorage.getItem("um");
-            var un = window.localStorage.getItem("un");
+          if (um && un) {
+            this.userInfo = {
+              email: um,
+              name: un
+            };
+          } // const urlParams = queryString.parse(window.location.search);
+          // if (urlParams.error) {
+          //   console.log(`An error occurred: ${urlParams.error}`);
+          // } else {
+          //     let um = window.localStorage.getItem("um");
+          //     let un = window.localStorage.getItem("un");
+          //     if (um && un) {
+          //       this.userInfo = {
+          //         email: um,
+          //         name: un
+          //       }
+          //       setTimeout(()=>{
+          //         this.showLoading = false
+          //       },1000)
+          //     } else if (urlParams.code) {
+          //         this.dataService
+          //           .getRegisteration(urlParams.code)
+          //           .subscribe((token) => {
+          //             this.dataService.getUserInfo(token.access_token).subscribe((info) => {
+          //               this.userInfo = info;
+          //               window.localStorage.setItem("um", this.userInfo.email);
+          //               window.localStorage.setItem("un", this.userInfo.name);
+          //               setTimeout(()=>{
+          //                 this.showLoading = false
+          //               },1000)
+          //             });
+          //           });
+          //       }
+          //     else {
+          //       this.router.navigate(['register'])
+          //     }
+          // }
 
-            if (um && un) {
-              this.userInfo = {
-                email: um,
-                name: un
-              };
-              setTimeout(function () {
-                _this2.showLoading = false;
-              }, 1000);
-            } else if (urlParams.code) {
-              this.dataService.getRegisteration(urlParams.code).subscribe(function (token) {
-                _this2.dataService.getUserInfo(token.access_token).subscribe(function (info) {
-                  _this2.userInfo = info;
-                  window.localStorage.setItem("um", _this2.userInfo.email);
-                  window.localStorage.setItem("un", _this2.userInfo.name);
-                  setTimeout(function () {
-                    _this2.showLoading = false;
-                  }, 1000);
-                });
-              });
-            } else {
-              this.router.navigate(['register']);
-            }
-          }
 
           this.dataService.getEvents().subscribe(function (events) {
             if (events !== null && events.length > 1) {
@@ -2166,6 +2166,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             _this2.dataService.getGames().subscribe(function (games) {
               _this2.games = games;
+              setTimeout(function () {
+                _this2.showLoading = false;
+              }, 100);
             });
           });
           this.form = this.formBuilder.group({
@@ -2271,6 +2274,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/form-page/bets.copy.json":
+  /*!******************************************!*\
+    !*** ./src/app/form-page/bets.copy.json ***!
+    \******************************************/
+
+  /*! exports provided: 0, 1, 2, 3, 4, 5, 6, default */
+
+  /***/
+  function srcAppFormPageBetsCopyJson(module) {
+    module.exports = JSON.parse("[{\"id\":\"anthem\",\"section\":\"Time\",\"q\":\"1:35.50 min:sec.ms National Anthem length Mickey Guyton\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"int\",\"section\":\"Game Stats\",\"q\":\"Interceptions: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"fum\",\"section\":\"Game Stats\",\"q\":\"Fumbles lost: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"kuppreceptions\",\"section\":\"Player Stats\",\"q\":\"Cooper Kupp receptions: 8.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"lalead\",\"section\":\"Yes or No\",\"q\":\"Will Los Angeles have the lead at halftime\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"cheetos\",\"section\":\"Commercials\",\"q\":\"Cheetos commercial before Pringles commercial\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"capmor\",\"section\":\"Commercials\",\"q\":\"Captain Morgan commercial before BMW commercial\",\"a1\":\"Yes\",\"a2\":\"No\"}]");
+    /***/
+  },
+
+  /***/
   "./src/app/form-page/form-page.component.scss":
   /*!****************************************************!*\
     !*** ./src/app/form-page/form-page.component.scss ***!
@@ -2286,7 +2303,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".header-line {\n  border: none;\n  height: 1px;\n  color: #333;\n  background-color: #333;\n}\n\n.line {\n  display: block;\n  position: relative;\n  padding: 0;\n  margin: 8px auto;\n  height: 0;\n  width: 100%;\n  max-height: 0;\n  font-size: 1px;\n  line-height: 0;\n  clear: both;\n  border: none;\n  border-top: 1px solid #aaaaaa;\n  border-bottom: 1px solid #ffffff;\n}\n\n.even-row {\n  background-color: #e6e6e6;\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\n.odd-row {\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\nbutton {\n  margin: 5px;\n}\n\nmat-radio-button {\n  margin: 3px;\n}\n\n.backdropBackground {\n  background-color: #bbbbbbf2;\n  -webkit-backdrop-filter: blur(4px);\n          backdrop-filter: blur(4px);\n}\n\n::ng-deep .mat-radio-outer-circle {\n  border-color: #424242 !important;\n}\n\n::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .cdk-overlay-container {\n  -webkit-backdrop-filter: blur(2px) !important;\n          backdrop-filter: blur(2px) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9ybS1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGZvcm0tcGFnZVxcZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb3JtLXBhZ2UvZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7QUNDSjs7QURDQTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSw2QkFBQTtFQUNBLGdDQUFBO0FDRUo7O0FEQ0M7RUFDRyx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFSjs7QURDQztFQUNHLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFSjs7QURDQztFQUNJLFdBQUE7QUNFTDs7QURDQztFQUNJLFdBQUE7QUNFTDs7QURDQztFQUNHLDJCQUFBO0VBQ0Esa0NBQUE7VUFBQSwwQkFBQTtBQ0VKOztBRENDO0VBQ0csZ0NBQUE7QUNFSjs7QURDQztFQUNHLG9DQUFBO0FDRUo7O0FEQ0M7RUFDRyw2Q0FBQTtVQUFBLHFDQUFBO0FDRUoiLCJmaWxlIjoic3JjL2FwcC9mb3JtLXBhZ2UvZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmhlYWRlci1saW5lIHtcclxuICAgIGJvcmRlcjogbm9uZTtcclxuICAgIGhlaWdodDogMXB4O1xyXG4gICAgY29sb3I6ICMzMzM7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xyXG59XHJcbi5saW5lIHtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgcGFkZGluZzogMDtcclxuICAgIG1hcmdpbjogOHB4IGF1dG87XHJcbiAgICBoZWlnaHQ6IDA7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIG1heC1oZWlnaHQ6IDA7XHJcbiAgICBmb250LXNpemU6IDFweDtcclxuICAgIGxpbmUtaGVpZ2h0OiAwO1xyXG4gICAgY2xlYXI6IGJvdGg7XHJcbiAgICBib3JkZXI6IG5vbmU7XHJcbiAgICBib3JkZXItdG9wOiAxcHggc29saWQgI2FhYWFhYTtcclxuICAgIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZmZmZmZmO1xyXG4gfVxyXG5cclxuIC5ldmVuLXJvdyB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZTZlNmU2O1xyXG4gICAgcGFkZGluZy10b3A6IDVweDtcclxuICAgIHBhZGRpbmctYm90dG9tOiAxcHg7XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gICAgYm9yZGVyLXdpZHRoOiAxcHg7XHJcbiAgICBib3JkZXItY29sb3I6IGJsYWNrO1xyXG4gfVxyXG5cclxuIC5vZGQtcm93IHtcclxuICAgIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgICBwYWRkaW5nLWJvdHRvbTogMXB4O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICAgIGJvcmRlci13aWR0aDogMXB4O1xyXG4gICAgYm9yZGVyLWNvbG9yOiBibGFjaztcclxufVxyXG5cclxuIGJ1dHRvbiB7XHJcbiAgICAgbWFyZ2luOiA1cHg7XHJcbiB9XHJcblxyXG4gbWF0LXJhZGlvLWJ1dHRvbiB7XHJcbiAgICAgbWFyZ2luOiAzcHg7XHJcbiB9XHJcblxyXG4gLmJhY2tkcm9wQmFja2dyb3VuZCB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmJiYmJiZjI7XHJcbiAgICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcclxuIH1cclxuXHJcbiA6Om5nLWRlZXAgLm1hdC1yYWRpby1vdXRlci1jaXJjbGUge1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjNDI0MjQyICFpbXBvcnRhbnQ7XHJcbiB9XHJcblxyXG4gOjpuZy1kZWVwIC5tYXQtcmFkaW8tYnV0dG9uLm1hdC1hY2NlbnQgLm1hdC1yYWRpby1pbm5lci1jaXJjbGUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xyXG4gfVxyXG5cclxuIDo6bmctZGVlcCAuY2RrLW92ZXJsYXktY29udGFpbmVyIHtcclxuICAgIGJhY2tkcm9wLWZpbHRlcjogYmx1cigycHgpICFpbXBvcnRhbnQ7XHJcbiB9IiwiLmhlYWRlci1saW5lIHtcbiAgYm9yZGVyOiBub25lO1xuICBoZWlnaHQ6IDFweDtcbiAgY29sb3I6ICMzMzM7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XG59XG5cbi5saW5lIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiA4cHggYXV0bztcbiAgaGVpZ2h0OiAwO1xuICB3aWR0aDogMTAwJTtcbiAgbWF4LWhlaWdodDogMDtcbiAgZm9udC1zaXplOiAxcHg7XG4gIGxpbmUtaGVpZ2h0OiAwO1xuICBjbGVhcjogYm90aDtcbiAgYm9yZGVyOiBub25lO1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2FhYWFhYTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNmZmZmZmY7XG59XG5cbi5ldmVuLXJvdyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlNmU2ZTY7XG4gIHBhZGRpbmctdG9wOiA1cHg7XG4gIHBhZGRpbmctYm90dG9tOiAxcHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMXB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG4ub2RkLXJvdyB7XG4gIHBhZGRpbmctdG9wOiA1cHg7XG4gIHBhZGRpbmctYm90dG9tOiAxcHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMXB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5idXR0b24ge1xuICBtYXJnaW46IDVweDtcbn1cblxubWF0LXJhZGlvLWJ1dHRvbiB7XG4gIG1hcmdpbjogM3B4O1xufVxuXG4uYmFja2Ryb3BCYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2JiYmJiYmYyO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbn1cblxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tb3V0ZXItY2lyY2xlIHtcbiAgYm9yZGVyLWNvbG9yOiAjNDI0MjQyICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcCAubWF0LXJhZGlvLWJ1dHRvbi5tYXQtYWNjZW50IC5tYXQtcmFkaW8taW5uZXItY2lyY2xlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xufVxuXG46Om5nLWRlZXAgLmNkay1vdmVybGF5LWNvbnRhaW5lciB7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cigycHgpICFpbXBvcnRhbnQ7XG59Il19 */";
+    __webpack_exports__["default"] = ".header-line {\n  border: none;\n  height: 1px;\n  color: #333;\n  background-color: #333;\n}\n\n.line {\n  display: block;\n  position: relative;\n  padding: 0;\n  margin: 8px auto;\n  height: 0;\n  width: 100%;\n  max-height: 0;\n  font-size: 1px;\n  line-height: 0;\n  clear: both;\n  border: none;\n  border-top: 1px solid #aaaaaa;\n  border-bottom: 1px solid #ffffff;\n}\n\n.even-row {\n  background-color: #e6e6e6;\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\n.odd-row {\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\nbutton {\n  margin: 5px;\n}\n\nmat-radio-button {\n  margin: 3px;\n}\n\n.backdropBackground {\n  background-color: #bbbbbbf2;\n  -webkit-backdrop-filter: blur(4px);\n          backdrop-filter: blur(4px);\n}\n\n.section-header {\n  background-color: #7b1fa2 !important;\n  color: white;\n  height: 50px;\n  font-size: x-large;\n  line-height: 50px;\n}\n\n::ng-deep .mat-radio-outer-circle {\n  border-color: #424242 !important;\n}\n\n::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .cdk-overlay-container {\n  -webkit-backdrop-filter: blur(2px) !important;\n          backdrop-filter: blur(2px) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9ybS1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGZvcm0tcGFnZVxcZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb3JtLXBhZ2UvZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7QUNDRjs7QURDQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSw2QkFBQTtFQUNBLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLDJCQUFBO0VBQ0Esa0NBQUE7VUFBQSwwQkFBQTtBQ0VGOztBRENBO0VBQ0Usb0NBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNFRjs7QURDQTtFQUNFLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSxvQ0FBQTtBQ0VGOztBRENBO0VBQ0UsNkNBQUE7VUFBQSxxQ0FBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvZm9ybS1wYWdlL2Zvcm0tcGFnZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXItbGluZSB7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGhlaWdodDogMXB4O1xyXG4gIGNvbG9yOiAjMzMzO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XHJcbn1cclxuLmxpbmUge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBwYWRkaW5nOiAwO1xyXG4gIG1hcmdpbjogOHB4IGF1dG87XHJcbiAgaGVpZ2h0OiAwO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1heC1oZWlnaHQ6IDA7XHJcbiAgZm9udC1zaXplOiAxcHg7XHJcbiAgbGluZS1oZWlnaHQ6IDA7XHJcbiAgY2xlYXI6IGJvdGg7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCAjYWFhYWFhO1xyXG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZmZmZmZmO1xyXG59XHJcblxyXG4uZXZlbi1yb3cge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNlNmU2ZTY7XHJcbiAgcGFkZGluZy10b3A6IDVweDtcclxuICBwYWRkaW5nLWJvdHRvbTogMXB4O1xyXG4gIGJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XHJcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLm9kZC1yb3cge1xyXG4gIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgcGFkZGluZy1ib3R0b206IDFweDtcclxuICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gIGJvcmRlci13aWR0aDogMXB4O1xyXG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgbWFyZ2luOiA1cHg7XHJcbn1cclxuXHJcbm1hdC1yYWRpby1idXR0b24ge1xyXG4gIG1hcmdpbjogM3B4O1xyXG59XHJcblxyXG4uYmFja2Ryb3BCYWNrZ3JvdW5kIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmJiYmJiZjI7XHJcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XHJcbn1cclxuXHJcbi5zZWN0aW9uLWhlYWRlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBoZWlnaHQ6IDUwcHg7XHJcbiAgZm9udC1zaXplOiB4LWxhcmdlO1xyXG4gIGxpbmUtaGVpZ2h0OiA1MHB4O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLm1hdC1yYWRpby1vdXRlci1jaXJjbGUge1xyXG4gIGJvcmRlci1jb2xvcjogIzQyNDI0MiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLm1hdC1yYWRpby1idXR0b24ubWF0LWFjY2VudCAubWF0LXJhZGlvLWlubmVyLWNpcmNsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLmNkay1vdmVybGF5LWNvbnRhaW5lciB7XHJcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDJweCkgIWltcG9ydGFudDtcclxufVxyXG4iLCIuaGVhZGVyLWxpbmUge1xuICBib3JkZXI6IG5vbmU7XG4gIGhlaWdodDogMXB4O1xuICBjb2xvcjogIzMzMztcbiAgYmFja2dyb3VuZC1jb2xvcjogIzMzMztcbn1cblxuLmxpbmUge1xuICBkaXNwbGF5OiBibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDhweCBhdXRvO1xuICBoZWlnaHQ6IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXgtaGVpZ2h0OiAwO1xuICBmb250LXNpemU6IDFweDtcbiAgbGluZS1oZWlnaHQ6IDA7XG4gIGNsZWFyOiBib3RoO1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCAjYWFhYWFhO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2ZmZmZmZjtcbn1cblxuLmV2ZW4tcm93IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2U2ZTZlNjtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDFweDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbi5vZGQtcm93IHtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDFweDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmJ1dHRvbiB7XG4gIG1hcmdpbjogNXB4O1xufVxuXG5tYXQtcmFkaW8tYnV0dG9uIHtcbiAgbWFyZ2luOiAzcHg7XG59XG5cbi5iYWNrZHJvcEJhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmJiYmJiZjI7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xufVxuXG4uc2VjdGlvbi1oZWFkZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgaGVpZ2h0OiA1MHB4O1xuICBmb250LXNpemU6IHgtbGFyZ2U7XG4gIGxpbmUtaGVpZ2h0OiA1MHB4O1xufVxuXG46Om5nLWRlZXAgLm1hdC1yYWRpby1vdXRlci1jaXJjbGUge1xuICBib3JkZXItY29sb3I6ICM0MjQyNDIgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tYnV0dG9uLm1hdC1hY2NlbnQgLm1hdC1yYWRpby1pbm5lci1jaXJjbGUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcCAuY2RrLW92ZXJsYXktY29udGFpbmVyIHtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDJweCkgIWltcG9ydGFudDtcbn0iXX0= */";
     /***/
   },
 
@@ -2345,6 +2362,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _core_data_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../core/data.service */
     "./src/app/core/data.service.ts");
+    /* harmony import */
+
+
+    var _bets_copy_json__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./bets.copy.json */
+    "./src/app/form-page/bets.copy.json");
+
+    var _bets_copy_json__WEBPACK_IMPORTED_MODULE_6___namespace = /*#__PURE__*/__webpack_require__.t(
+    /*! ./bets.copy.json */
+    "./src/app/form-page/bets.copy.json", 1);
 
     var FormPageComponent = /*#__PURE__*/function () {
       function FormPageComponent(dialog, dataService, router) {
@@ -2354,39 +2381,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.dataService = dataService;
         this.router = router;
         this.sections = [];
-        this.info = {
-          bets: [{
-            id: "anthem",
-            section: "Time",
-            q: "2:00 (min:sec) Demi Lovato anthem length",
-            a1: "Over",
-            a2: "Under"
-          }, {
-            id: "halftime",
-            section: "Time",
-            q: "32:00 (min:sec) Halftime length",
-            a1: "Over",
-            a2: "Under"
-          }, {
-            id: "gametime",
-            section: "Time",
-            q: "3:34 (hr:min) Game time length",
-            a1: "Over",
-            a2: "Under"
-          }, {
-            id: "coin",
-            section: "Coin Toss",
-            q: "Heads or Tails",
-            a1: "Heads",
-            a2: "Tails"
-          }, {
-            id: "coinwinner",
-            section: "Coin Toss",
-            q: "Winner of coin toss",
-            a1: "SF",
-            a2: "KC"
-          }]
-        };
+        this.info = _bets_copy_json__WEBPACK_IMPORTED_MODULE_6__;
         this.isDisabled = true;
         this.isAdmin = false;
         this.newBet = false;
@@ -2427,17 +2422,22 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               _this5.router.navigate(["register"]);
             }
           });
-          var games = new Set(this.info.bets.map(function (item) {
+          var games = new Set(this.info.map(function (item) {
             return item.section;
           }));
           games.forEach(function (g) {
             return _this5.sections.push({
               name: g,
-              bets: _this5.info.bets.filter(function (i) {
+              bets: _this5.info.filter(function (i) {
                 return i.section === g;
               })
             });
           });
+        }
+      }, {
+        key: "isSpecialBet",
+        value: function isSpecialBet(bet) {
+          if (bet.id == "finalscore" || bet.id == "mvp" || bet.id == "gatorade") return false;else return true;
         }
       }, {
         key: "makeBet",
@@ -2473,7 +2473,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
 
           if (!found) {
-            var questionText = this.info.bets.filter(function (i) {
+            var questionText = this.info.filter(function (i) {
               return i.id === question;
             })[0].q;
             var newBet = {
@@ -2489,7 +2489,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.guesses.push(newBet);
           }
 
-          if (this.info.bets.length == this.guesses.length || this.isAdmin) {
+          if (this.info.length == this.guesses.length || this.isAdmin) {
             this.isDisabled = false;
           }
         }
@@ -2498,37 +2498,70 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function submit() {
           var _this7 = this;
 
+          this.showLoading = true;
+
           if (this.isAdmin) {
             this.guesses.forEach(function (guess) {
               guess.answer = guess.guess;
+            });
+            this.dataService.updateBet(this.guesses).subscribe(function (data) {
+              _this7.dataService.getBets().subscribe(function (bets) {
+                _this7.dataService.getPlayers().subscribe(function (players) {
+                  players.forEach(function (player) {
+                    var playerbets = bets.filter(function (bet) {
+                      return bet.playerId === player._id;
+                    });
+                    var rightPicks = playerbets.filter(function (item) {
+                      return item.guess == item.answer;
+                    });
+                    var finishedPicks = playerbets.filter(function (item) {
+                      return item.answer;
+                    });
+                    player.record = rightPicks.length + "/" + finishedPicks.length;
 
-              _this7.dataService.updateBet(guess).subscribe(function (bet) {
-                console.log("Player bet, ", bet);
+                    _this7.dataService.updatePlayer(player).subscribe(function (player) {});
+                  });
 
-                _this7.router.navigate(["entries"]);
+                  _this7.router.navigate(["entries"]);
+                });
               });
             });
           } else {
             if (this.playerAlreadyBet) {
-              this.guesses.forEach(function (guess) {
-                guess.playerId = _this7.playerId;
-                guess.groupId = _this7.groupId;
+              this.dataService.deleteBet(this.playerId + ',' + this.groupId + ',' + this.eventId).subscribe(function (data) {
+                _this7.guesses.forEach(function (guess) {
+                  guess.playerId = _this7.playerId;
+                  guess.groupId = _this7.groupId;
+                  guess._id = null;
+                });
 
-                _this7.dataService.updateBet(guess).subscribe(function (bet) {
-                  console.log("Player bet, ", bet);
+                _this7.dataService.insertBet(_this7.guesses).subscribe(function (data) {
+                  _this7.router.navigate(["/review"], {
+                    queryParams: {
+                      id: _this7.playerId,
+                      playerName: _this7.playerName,
+                      groupId: _this7.groupId,
+                      groupName: _this7.gameName
+                    }
+                  });
                 });
               });
-              this.router.navigate(["entries"]);
             } else {
               this.guesses.forEach(function (guess) {
                 guess.playerId = _this7.playerId;
                 guess.groupId = _this7.groupId;
-
-                _this7.dataService.insertBet(guess).subscribe(function (bet) {
-                  console.log("Player bet, ", bet);
+                guess._id = null;
+              });
+              this.dataService.insertBet(this.guesses).subscribe(function (data) {
+                _this7.router.navigate(["/review"], {
+                  queryParams: {
+                    id: _this7.playerId,
+                    playerName: _this7.playerName,
+                    groupId: _this7.groupId,
+                    groupName: _this7.gameName
+                  }
                 });
               });
-              this.router.navigate(["entries"]);
             }
           }
         }
@@ -2674,10 +2707,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
 
       _createClass(InfoDialogComponent, [{
-        key: "ngOnDestroy",
-        value: function ngOnDestroy() {//this.dataServiceSubscription.unsubscribe()
-        }
-      }, {
         key: "ngOnInit",
         value: function ngOnInit() {
           var _this9 = this;
@@ -2689,32 +2718,25 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             group: [null]
           });
           this.dataService.getEvents().subscribe(function (events) {
-            if (events !== null && events.length > 1) {
-              _this9.events = events;
+            _this9.events = events;
+            var today = new Date();
+            _this9.events = _this9.events.filter(function (e) {
+              return today < new Date(e.start);
+            });
 
-              _this9.form.get("event").setValue(_this9.events[0]);
-
-              _this9.firstEvent = _this9.event = events.sort(function (a, b) {
+            if (_this9.events !== null && _this9.events.length > 1) {
+              _this9.firstEvent = _this9.events.sort(function (a, b) {
                 return new Date(a.start).getTime() - new Date(b.start).getTime();
               })[0];
-            } else if (events !== null && events.length == 1) {
-              _this9.events = events;
 
               _this9.form.get("event").setValue(_this9.events[0]);
 
-              _this9.event = events[0];
-            } // else {
-            //   let event: IEvent = {
-            //     _id: '',
-            //     name: 'Superbowl',
-            //     start: new Date('2022-03-03 09:15'),
-            //     hasEnded: false
-            //   }
-            //   this.dataService.insertEvent(event).subscribe((event)=>{
-            //     this.event = event;
-            //   })
-            // }
+              _this9.event = _this9.events[0];
+            } else if (_this9.events !== null && _this9.events.length == 1) {
+              _this9.form.get("event").setValue(_this9.events[0]);
 
+              _this9.event = _this9.events[0];
+            }
 
             _this9.dataService.getGames().subscribe(function (games) {
               _this9.games = games;
@@ -2730,7 +2752,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
           this.event = this.events.filter(function (i) {
             return i._id === _this10.selectedEvent._id;
-          })[0]; //this.dataService.setEvent(this.event)
+          })[0];
         }
       }, {
         key: "selecteGame",
@@ -2791,7 +2813,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   _id: _this12.existingPlayerId,
                   email: _this12.userEmail,
                   name: _this12.form.value.name,
-                  gameId: _this12.gameId
+                  gameId: _this12.gameId,
+                  record: '0/0'
                 };
 
                 _this12.dataService.insertPlayer(player).subscribe(function (player) {
@@ -3026,28 +3049,92 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _core_data_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../core/data.service */
+    "./src/app/core/data.service.ts");
+    /* harmony import */
+
+
+    var query_string__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! query-string */
+    "./node_modules/query-string/index.js");
+    /* harmony import */
+
+
+    var query_string__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_4__);
 
     var NavBarComponent = /*#__PURE__*/function () {
-      function NavBarComponent() {
+      function NavBarComponent(router, dataService) {
         _classCallCheck(this, NavBarComponent);
+
+        this.router = router;
+        this.dataService = dataService;
+        this.isLoggedIn = false;
+        this.userEmail = "";
+        this.userName = "";
       }
 
       _createClass(NavBarComponent, [{
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this13 = this;
+
+          this.userEmail = window.localStorage.getItem("um");
+          this.userName = window.localStorage.getItem("un");
+          if (this.userEmail && this.userName) this.isLoggedIn = true;else {
+            var urlParams = query_string__WEBPACK_IMPORTED_MODULE_4__["parse"](window.location.search);
+
+            if (urlParams.code) {
+              this.dataService.getRegisteration(urlParams.code).subscribe(function (token) {
+                _this13.dataService.getUserInfo(token.access_token).subscribe(function (info) {
+                  window.localStorage.setItem("um", info.email);
+                  window.localStorage.setItem("un", info.name);
+                  _this13.userName = info.name;
+                  _this13.isLoggedIn = true;
+                });
+              });
+            } else {
+              this.router.navigate(["register"]);
+            }
+          }
+        }
       }, {
         key: "login",
-        value: function login() {}
+        value: function login() {
+          this.router.navigate(["register"]);
+        }
       }, {
         key: "logout",
-        value: function logout() {}
+        value: function logout() {
+          this.isLoggedIn = false;
+          window.localStorage.removeItem("um");
+          window.localStorage.removeItem("un");
+          this.router.navigate(["register"]);
+        }
       }]);
 
       return NavBarComponent;
     }();
 
+    NavBarComponent.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _core_data_service__WEBPACK_IMPORTED_MODULE_3__["DataService"]
+      }];
+    };
+
     NavBarComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
-      selector: 'nav-bar',
+      selector: "nav-bar",
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./nav-bar.component.html */
       "./node_modules/raw-loader/dist/cjs.js!./src/app/nav-bar/nav-bar.component.html"))["default"],
@@ -3212,38 +3299,38 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _createClass(ReviewPageComponent, [{
         key: "ngAfterViewInit",
         value: function ngAfterViewInit() {
-          var _this13 = this;
+          var _this14 = this;
 
           this.dataService.getEvents().subscribe(function (events) {
             if (events !== null) {
               var sortedEvents = events.sort(function (a, b) {
                 return new Date(a.start) - new Date(b.start);
               });
-              _this13.event = sortedEvents[0];
+              _this14.event = sortedEvents[0];
             }
           });
           this.route.queryParams.subscribe(function (params) {
-            _this13.playerId = params['id'];
-            _this13.playerName = params['playerName'];
-            _this13.groupId = params['groupId'];
-            _this13.groupName = params['groupName'];
+            _this14.playerId = params['id'];
+            _this14.playerName = params['playerName'];
+            _this14.groupId = params['groupId'];
+            _this14.groupName = params['groupName'];
           });
           this.dataService.getBets().subscribe(function (bets) {
-            _this13.bets = bets.filter(function (bet) {
-              return bet.playerId === _this13.playerId;
+            _this14.bets = bets.filter(function (bet) {
+              return bet.playerId === _this14.playerId;
             });
 
-            var rightPicks = _this13.bets.filter(function (item) {
+            var rightPicks = _this14.bets.filter(function (item) {
               return item.guess == item.answer;
             });
 
-            var finishedPicks = _this13.bets.filter(function (item) {
+            var finishedPicks = _this14.bets.filter(function (item) {
               return item.answer;
             });
 
-            _this13.results = rightPicks.length + "/" + finishedPicks.length;
+            _this14.results = rightPicks.length + "/" + finishedPicks.length;
             setTimeout(function () {
-              _this13.showLoading = false;
+              _this14.showLoading = false;
             }, 1000);
           });
         }

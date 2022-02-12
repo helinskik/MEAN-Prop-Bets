@@ -110,7 +110,7 @@ export class DataService {
             );
     }
 
-    insertBet(bet: IBet) : Observable<IBet> {
+    insertBet(bet: IBet[]) : Observable<IBet> {
         return this.http.post<IBetResponse>(this.betUrl, bet, {
             headers: this.headers
          })
@@ -123,8 +123,8 @@ export class DataService {
                 );
     }
    
-    updateBet(bet: IBet) : Observable<IBet> {
-        return this.http.put<IBetResponse>(this.betUrl + '/' + bet._id, bet, {
+    updateBet(bets: IBet[]) : Observable<IBet> {
+        return this.http.put<IBetResponse>(this.betUrl + '/update', bets, {
             headers: this.headers
          }) 
             .pipe(

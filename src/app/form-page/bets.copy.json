@@ -1,0 +1,52 @@
+ [
+      {
+        "id": "anthem",
+        "section": "Time",
+        "q": "1:35.50 min:sec.ms National Anthem length Mickey Guyton",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "int",
+        "section": "Game Stats",
+        "q": "Interceptions: 1.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "fum",
+        "section": "Game Stats",
+        "q": "Fumbles lost: 1.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "kuppreceptions",
+        "section": "Player Stats",
+        "q": "Cooper Kupp receptions: 8.5",
+        "a1": "Over",
+        "a2": "Under"
+      },
+      {
+        "id": "lalead",
+        "section": "Yes or No",
+        "q": "Will Los Angeles have the lead at halftime",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "cheetos",
+        "section": "Commercials",
+        "q": "Cheetos commercial before Pringles commercial",
+        "a1": "Yes",
+        "a2": "No"
+      },
+      {
+        "id": "capmor",
+        "section": "Commercials",
+        "q": "Captain Morgan commercial before BMW commercial",
+        "a1": "Yes",
+        "a2": "No"
+      }
+      
+    ]

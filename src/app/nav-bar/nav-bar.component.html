@@ -1,15 +1,9 @@
 <nav>
-    <mat-toolbar color="primary" style="height: auto;">
-        <ul class="nav navbar-nav navbar-right">
-            <!-- <li *ngIf="!auth.isLoggedIn()"><a [href]="googleLoginUrl">Sign in</a></li> -->
-            <!-- <li *ngIf="auth.isLoggedIn()"><a routerLink="/profile">{{ auth.getUserDetails()?.name }}</a></li>
-            <li *ngIf="auth.isLoggedIn()"><a (click)="auth.logout()">Logout</a></li> -->
+    <mat-toolbar color="primary" style="height: auto; padding-top: 10px;">
+        <ul class="nav navbar-nav navbar-right" style="flex-direction:row; width: 100%;">
+            <!-- <li *ngIf="!isLoggedIn" style="width: 100%; text-align: right;"><a (click)="login()">Register Now</a></li> -->
+            <li *ngIf="isLoggedIn" style="width: 70%; text-align: left;"><p>{{ userName }}</p></li>
+            <li *ngIf="isLoggedIn"><a (click)="logout()" style="width: 70%; text-align: right;">Logout</a></li>
         </ul>
-        <!-- <span class="navbar-fill" style="float: right;">
-            <div *ngIf="isLoggedIn" style="padding: 10px; width: 100%;">{{user?.profile.nickname}}</div>
-            <button *ngIf="isLoggedIn" mat-button routerLink="/projects">My Bets</button>
-            <button *ngIf="!isLoggedIn" mat-button (click)="login()">Login</button>
-            <button *ngIf="isLoggedIn" mat-button (click)="logout()">Logout</button>
-        </span> -->
     </mat-toolbar>
 </nav>

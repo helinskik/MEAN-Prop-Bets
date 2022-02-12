@@ -29,13 +29,13 @@
         </mat-form-field>
         
         <mat-form-field *ngIf="gameText == 'Create New Group'">
-            <input matInput placeholder="Group Name" formControlName="group" formControlName="group" [ngClass]="displayFieldCss('game')">
+            <input matInput placeholder="Group Name" formControlName="group" formControlName="group" [ngClass]="displayFieldCss('game')" autocomplete="off">
         </mat-form-field>
 
         <h2 mat-dialog-title style="padding-top: 25px;">Name</h2>
         <p>Enter your name for the entry.</p>
         <mat-form-field>
-            <input matInput placeholder="Name" formControlName="name" formControlName="name" [ngClass]="displayFieldCss('name')">
+            <input matInput placeholder="Name" formControlName="name" formControlName="name" [ngClass]="displayFieldCss('name')" autocomplete="off">
         </mat-form-field>
 
         <mat-dialog-actions class="d-flex justify-content-center">

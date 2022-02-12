@@ -32,10 +32,6 @@ export class InfoDialogComponent implements OnInit {
     private dataService: DataService
   ) {}
 
-  ngOnDestroy(): void {
-    //this.dataServiceSubscription.unsubscribe()
-  }
-
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       event: [null, Validators.required],
@@ -45,40 +41,28 @@ export class InfoDialogComponent implements OnInit {
     });
 
     this.dataService.getEvents().subscribe((events) => {
-      if (events !== null && events.length > 1) {
-        this.events = events;
-        this.form.get("event").setValue(this.events[0]);
-        this.firstEvent = this.event = events.sort((a: IEvent, b: IEvent) => {
+      this.events = events;
+      var today = new Date();
+      this.events = this.events.filter(e => today < new Date(e.start))
+      if (this.events !== null && this.events.length > 1) {
+        this.firstEvent = this.events.sort((a: IEvent, b: IEvent) => {
           return new Date(a.start).getTime() - new Date(b.start).getTime();
         })[0];
-      } else if (events !== null && events.length == 1) {
-        this.events = events;
         this.form.get("event").setValue(this.events[0]);
-        this.event = events[0];
+        this.event = this.events[0];
+      } else if (this.events !== null && this.events.length == 1) {
+        this.form.get("event").setValue(this.events[0]);
+        this.event = this.events[0];
       }
-      // else {
-      //   let event: IEvent = {
-      //     _id: '',
-      //     name: 'Superbowl',
-      //     start: new Date('2022-03-03 09:15'),
-      //     hasEnded: false
-      //   }
-      //   this.dataService.insertEvent(event).subscribe((event)=>{
-      //     this.event = event;
-      //   })
-      // }
-
       this.dataService.getGames().subscribe((games) => {
         this.games = games;
       });
-
       this.form.get("name").setValue(this.userName);
     });
   }
 
   selecteEvent($event: any): void {
     this.event = this.events.filter((i) => i._id === this.selectedEvent._id)[0];
-    //this.dataService.setEvent(this.event)
   }
 
   selecteGame($event: any): void {
@@ -130,6 +114,7 @@ export class InfoDialogComponent implements OnInit {
             email: this.userEmail,
             name: this.form.value.name,
             gameId: this.gameId,
+            record: '0/0'
           };
           this.dataService.insertPlayer(player).subscribe((player: IPlayer) => {
             console.log("Player created, ", player);
