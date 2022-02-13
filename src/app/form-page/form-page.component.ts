@@ -5,7 +5,7 @@ import { InfoDialogComponent } from "./info-dialog/info-dialog.component";
 import { Router } from "@angular/router";
 import { DataService } from "../core/data.service";
 import { IBet, IEvent, IGame, IPlayer } from "../shared/interfaces";
-import * as data from "./bets.copy.json"
+import * as data from "./bets.json"
 
 @Component({
   selector: "form-page",
