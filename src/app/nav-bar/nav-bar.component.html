@@ -3,7 +3,7 @@
         <ul class="nav navbar-nav navbar-right" style="flex-direction:row; width: 100%;">
             <!-- <li *ngIf="!isLoggedIn" style="width: 100%; text-align: right;"><a (click)="login()">Register Now</a></li> -->
             <li *ngIf="isLoggedIn" style="width: 70%; text-align: left;"><p>{{ userName }}</p></li>
-            <li *ngIf="isLoggedIn" style="width: 30%; text-align: right;"><a (click)="logout()">Logout</a></li>
+            <li *ngIf="isLoggedIn" style="width: 30%; text-align: right; cursor: pointer;"><a (click)="logout()">Logout</a></li>
         </ul>
     </mat-toolbar>
 </nav>

@@ -91,7 +91,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 25px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #7b1fa2 !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"row d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Score </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while your games load...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\">\n    <h3 *ngIf=\"isLive\" class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 15px 0 5px;\">EVENT IS LIVE</h3>\n    <h3 *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin: 15px 0 5px;\">Betting open for</h3>\n    <h2 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 5px 0 55px;\">{{event?.name}}</h2>\n    <p class=\"d-flex justify-content-center\">Select a group to see all of the submitted entries</p>\n    <form class=\"form-horizontal d-flex justify-content-center\" [formGroup]=\"form\">\n        <mat-form-field style=\"background-color: #a79faa !important;\">\n            <mat-label>Group</mat-label>\n            <mat-select style=\"text-align: center;\" [(ngModel)]=\"selectedValue\" name=\"game\" id=\"game\" #game formControlName=\"game\" (selectionChange)=\"selected($event)\"> \n                <mat-option *ngFor=\"let game of games\" [value]=\"game\">\n                {{game.name}}\n                </mat-option>\n            </mat-select>\n        </mat-form-field>\n    </form>\n\n    <div class=\"d-flex justify-content-center\" style=\"margin-top: 30px;\">\n        <p>{{this.numBets}}</p>\n    </div>\n    \n    <hr *ngIf=\"players.length == 0\">\n\n    <div *ngIf=\"players.length == 0\" class=\"d-flex justify-content-center\">\n        No group selected with any players\n    </div>\n\n    <div *ngIf=\"players.length != 0\" class=\"d-flex justify-content-center\">\n        <table mat-table [dataSource]=\"players\" mat-table class=\"mat-table cdk-table col-xl-9 col-lg-9 col-md-10 col-sm-11 col-xs-12\" style=\"text-align: center; width: 100%;\">\n          \n            <ng-container matColumnDef=\"name\">\n              <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Player </th>\n              <td mat-cell *matCellDef=\"let element\"> {{element.name}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"record\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Score </th>\n                <td mat-cell *matCellDef=\"let element\"> {{element.record}} </td>\n            </ng-container>\n\n            <ng-container matColumnDef=\"details\">\n                <th mat-header-cell *matHeaderCellDef style=\"text-align: center;\"> Details </th>\n                <td mat-cell *matCellDef=\"let element\"> \n                    <button mat-raised-button color=\"primary\" (click)=\"goTo(element)\">Show picks</button> \n                </td>\n            </ng-container>\n          \n            <tr mat-header-row *matHeaderRowDef=\"displayedColumns\"></tr>\n            <tr mat-row *matRowDef=\"let row; columns: displayedColumns;\"></tr>\n        </table>\n    </div>\n\n    <mat-dialog-actions *ngIf=\"!isLive\" class=\"d-flex justify-content-center\" style=\"margin-top: 50px;\">\n        <button mat-raised-button color=\"secondary\" (click)=\"new()\">Make a new bet</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -111,7 +111,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center section-header\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
+    __webpack_exports__["default"] = "<div *ngIf=\"showLoading\" class=\"container-fluid\">\n    <loading-screen loadingContent=\"Please wait while betting sheet loads...\" ></loading-screen>\n</div>\n\n<div *ngIf=\"!showLoading\" class=\"container-fluid\">\n    <h1 class=\"d-flex justify-content-center mat-display-2\" style=\"margin: 25px 0 5px;\">{{eventName}}</h1>\n    <h3 class=\"d-flex justify-content-center mat-display-1\" style=\"margin: 0px 0 25px;\">Prop Bets</h3>\n    <h4 class=\"d-flex justify-content-center\">Betting closes at: {{eventDate  | date :'short'}}</h4>\n    <div *ngIf=\"newBet\" class=\"navbar-header d-flex justify-content-center\">\n        <p>Group: {{gameName}}</p>\n        <div style=\"width: 100px;\"></div>\n        <p>Name: {{playerName}}</p>\n    </div>\n  \n    <hr class=\"header-line\">\n\n    <div class=\"row m-xl-5 m-lg-4 m-md-3 m-sm-0 m-xs-0 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center\">\n        <ng-container *ngFor=\"let section of sections\">\n\n            <div class=\"col-12 mb-md-3 mb-lg-3 mb-xl-3 d-flex justify-content-md-center justify-content-lg-center justify-content-xl-center section-header\">{{ section.name }}</div>\n\n            <ng-container *ngFor=\"let bet of section.bets; let col = index\">\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 even-row' : 'col-xl-5 col-lg-5 col-md-5 col-sm-7 col-6 odd-row'\">\n                        {{ bet.q }}\n                    </div>\n                    <div *ngIf=\"isSpecialBet(bet)\" [ngClass]=\"col % 2 == 0 ? 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 even-row' : 'col-xl-3 col-lg-3 col-md-3 col-sm-5 col-6 odd-row'\">\n                        <mat-radio-group name=\"{{ bet.id }}\" (change)=\"radioChange($event)\">\n                            <mat-radio-button style=\"float: left;\" value=\"{{ bet.a1 }}\">{{ bet.a1 }}</mat-radio-button>\n                            <mat-radio-button style=\"float: right;\" value=\"{{ bet.a2 }}\">{{ bet.a2 }}</mat-radio-button>\n                        </mat-radio-group>\n                    </div>\n                    <!-- <div *ngIf=\"!isSpecialBet(bet)\" class=\"even-row\" style=\"width: 100%;\">\n                        \n                            <mat-form-field *ngIf=\"bet.id == 'gatorade'\" style=\"width: 100%;\">\n                                <input id=\"gatorade\" matInput placeholder=\"Color\" autocomplete=\"off\">\n                            </mat-form-field>\n                        \n                            <div  *ngIf=\"bet.id == 'finalscore'\" class=\"d-flex\">\n                                <mat-form-field *ngIf=\"bet.id == 'finalscore'\" style=\"width: 40%;\">\n                                    <input id=\"rams\" matInput placeholder=\"Rams\" autocomplete=\"off\">\n                                </mat-form-field>\n                                <div style=\"width: 100px;\"></div>\n                                <mat-form-field *ngIf=\"bet.id == 'finalscore'\" style=\"width: 40%;\">\n                                    <input id=\"bengals\" matInput placeholder=\"Bengals\" autocomplete=\"off\">\n                                </mat-form-field>\n                            </div>\n                    \n                            <mat-form-field *ngIf=\"bet.id == 'mvp'\" style=\"width: 100%;\">\n                                <input id=\"mvp\" matInput placeholder=\"Name\" autocomplete=\"off\">\n                            </mat-form-field>\n                        \n                    </div> -->\n            </ng-container>\n\n        </ng-container>\n        \n    </div>\n\n    <mat-dialog-actions class=\"mt-4 d-flex justify-content-center\">\n        <button *ngIf=\"newBet\" mat-raised-button color=\"primary\" (click)=\"submit()\" [disabled]=\"isDisabled\">Submit</button>\n        <button *ngIf=\"!newBet\" mat-raised-button color=\"primary\" (click)=\"makeBet()\">Make Bets</button>\n        <button mat-raised-button color=\"secondary\" (click)=\"seeEntries()\">See Entries</button>\n    </mat-dialog-actions>\n</div>";
     /***/
   },
 
@@ -171,7 +171,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<nav>\n    <mat-toolbar color=\"primary\" style=\"height: auto; padding-top: 10px;\">\n        <ul class=\"nav navbar-nav navbar-right\" style=\"flex-direction:row; width: 100%;\">\n            <!-- <li *ngIf=\"!isLoggedIn\" style=\"width: 100%; text-align: right;\"><a (click)=\"login()\">Register Now</a></li> -->\n            <li *ngIf=\"isLoggedIn\" style=\"width: 70%; text-align: left;\"><p>{{ userName }}</p></li>\n            <li *ngIf=\"isLoggedIn\"><a (click)=\"logout()\" style=\"width: 70%; text-align: right;\">Logout</a></li>\n        </ul>\n    </mat-toolbar>\n</nav>";
+    __webpack_exports__["default"] = "<nav>\n    <mat-toolbar color=\"primary\" style=\"height: auto; padding-top: 10px;\">\n        <ul class=\"nav navbar-nav navbar-right\" style=\"flex-direction:row; width: 100%;\">\n            <!-- <li *ngIf=\"!isLoggedIn\" style=\"width: 100%; text-align: right;\"><a (click)=\"login()\">Register Now</a></li> -->\n            <li *ngIf=\"isLoggedIn\" style=\"width: 70%; text-align: left;\"><p>{{ userName }}</p></li>\n            <li *ngIf=\"isLoggedIn\" style=\"width: 30%; text-align: right; cursor: pointer;\"><a (click)=\"logout()\">Logout</a></li>\n        </ul>\n    </mat-toolbar>\n</nav>";
     /***/
   },
 
@@ -191,7 +191,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<div class=\"container-fluid\">\r\n  <h1\r\n    class=\"d-flex justify-content-center mat-display-3\"\r\n    style=\"margin: 40px 0 40px\"\r\n  >\r\n    Prop Bets\r\n  </h1>\r\n  <h3 class=\"d-flex justify-content-center\" style=\"margin-bottom: -2px\">\r\n    Current Event:\r\n  </h3>\r\n  <h3 class=\"d-flex justify-content-center mat-display-2\">Superbowl LVI</h3>\r\n  <div class=\"justify-content-center\" style=\"padding: 20px; text-align: center\">\r\n    <p mat-display-1=\"\">\r\n      Click the button below to login or create an account using a valid Google\r\n      email.\r\n    </p>\r\n    <button\r\n      class=\"btn btn-default mat-raised-button mat-button-base mat-primary\"\r\n      color=\"primary\"\r\n      mat-raised-button=\"\"\r\n      ng-reflect-color=\"primary\"\r\n      (click)=\"register()\"\r\n    >\r\n      <span class=\"mat-button-wrapper\">Register!</span>\r\n      <div\r\n        class=\"mat-button-ripple mat-ripple\"\r\n        matripple=\"\"\r\n        ng-reflect-centered=\"false\"\r\n        ng-reflect-disabled=\"false\"\r\n        ng-reflect-trigger=\"[object HTMLButtonElement]\"\r\n      ></div>\r\n      <div class=\"mat-button-focus-overlay\"></div>\r\n    </button>\r\n  </div>\r\n</div>\r\n";
+    __webpack_exports__["default"] = "<div class=\"container-fluid\">\r\n  <h1\r\n    class=\"d-flex justify-content-center mat-display-3\"\r\n    style=\"margin: 40px 0 40px\"\r\n  >\r\n    Prop Bets\r\n  </h1>\r\n  <h3 class=\"d-flex justify-content-center\" style=\"margin-bottom: -2px\">\r\n    Current Event:\r\n  </h3>\r\n  <h3 class=\"d-flex justify-content-center mat-display-2\" style=\"margin-bottom: 10px;\">Superbowl LVI</h3>\r\n  <form class=\"form-horizontal\" [formGroup]=\"form\" (submit)=\"register()\">\r\n    <div\r\n      class=\"justify-content-center\"\r\n      style=\"padding: 20px; text-align: center\"\r\n    >\r\n      <h2 mat-dialog-title style=\"padding-top: 25px\">Enter your Email:</h2>\r\n      <mat-form-field style=\"background-color: #a79faa;\">\r\n        <input\r\n          matInput\r\n          placeholder=\"Email\"\r\n          formControlName=\"email\"\r\n          formControlName=\"email\"\r\n          autocomplete=\"off\"\r\n          type=\"email\"\r\n        />\r\n      </mat-form-field>\r\n\r\n      <h2 mat-dialog-title style=\"padding-top: 25px\">Enter your Name:</h2>\r\n      <mat-form-field style=\"background-color: #a79faa;\">\r\n        <input\r\n          matInput\r\n          placeholder=\"Name\"\r\n          formControlName=\"name\"\r\n          formControlName=\"name\"\r\n          autocomplete=\"off\"\r\n        />\r\n      </mat-form-field>\r\n      <mat-dialog-actions class=\"d-flex justify-content-center\" style=\"margin-top: 20px;margin-bottom: 50px;\">\r\n        <button type=\"submit\" mat-raised-button color=\"primary\">\r\n          Register\r\n        </button>\r\n      </mat-dialog-actions>\r\n    <p mat-display-1=\"\">\r\n      Or click the button below to login or create an account using a valid Google\r\n      email.\r\n    </p>\r\n      <button\r\n      class=\"btn btn-default mat-raised-button mat-button-base mat-primary\"\r\n      color=\"primary\"\r\n      mat-raised-button=\"\"\r\n      ng-reflect-color=\"primary\"\r\n      (click)=\"googleRegister()\"\r\n    >\r\n      <span class=\"mat-button-wrapper\">Register with Google</span>\r\n      <div\r\n        class=\"mat-button-ripple mat-ripple\"\r\n        matripple=\"\"\r\n        ng-reflect-centered=\"false\"\r\n        ng-reflect-disabled=\"false\"\r\n        ng-reflect-trigger=\"[object HTMLButtonElement]\"\r\n      ></div>\r\n      <div class=\"mat-button-focus-overlay\"></div>\r\n    </button>\r\n    </div>\r\n  </form>\r\n</div>\r\n";
     /***/
   },
 
@@ -1552,7 +1552,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var data = {
             client_id: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com',
             client_secret: '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',
-            redirect_uri: 'http://localhost:8080/entries',
+            redirect_uri: 'https://vast-badlands-87144.herokuapp.com/entries',
             grant_type: 'authorization_code',
             code: code
           }; //   });
@@ -2032,7 +2032,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "#game {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .mat-form-field-wrapper {\n  padding-bottom: 1.1em !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0NBQUE7QUNDRjs7QURFQTtFQUNFLGdDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2dhbWUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcclxuICBwYWRkaW5nLWJvdHRvbTogMS4xZW0gIWltcG9ydGFudDtcclxufVxyXG4iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcbiAgcGFkZGluZy1ib3R0b206IDEuMWVtICFpbXBvcnRhbnQ7XG59Il19 */";
+    __webpack_exports__["default"] = "#game {\n  background-color: #a79faa !important;\n}\n\n::ng-deep .mat-form-field-wrapper {\n  padding-bottom: 1.1em !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZW50cmllcy1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGVudHJpZXMtcGFnZVxcZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0Usb0NBQUE7QUNDRjs7QURFQTtFQUNFLGdDQUFBO0FDQ0YiLCJmaWxlIjoic3JjL2FwcC9lbnRyaWVzLXBhZ2UvZW50cmllcy1wYWdlLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiI2dhbWUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNhNzlmYWEgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcclxuICBwYWRkaW5nLWJvdHRvbTogMS4xZW0gIWltcG9ydGFudDtcclxufVxyXG4iLCIjZ2FtZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNhNzlmYWEgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC13cmFwcGVyIHtcbiAgcGFkZGluZy1ib3R0b206IDEuMWVtICFpbXBvcnRhbnQ7XG59Il19 */";
     /***/
   },
 
@@ -2279,11 +2279,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     !*** ./src/app/form-page/bets.copy.json ***!
     \******************************************/
 
-  /*! exports provided: 0, 1, 2, 3, 4, 5, 6, default */
+  /*! exports provided: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, default */
 
   /***/
   function srcAppFormPageBetsCopyJson(module) {
-    module.exports = JSON.parse("[{\"id\":\"anthem\",\"section\":\"Time\",\"q\":\"1:35.50 min:sec.ms National Anthem length Mickey Guyton\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"int\",\"section\":\"Game Stats\",\"q\":\"Interceptions: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"fum\",\"section\":\"Game Stats\",\"q\":\"Fumbles lost: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"kuppreceptions\",\"section\":\"Player Stats\",\"q\":\"Cooper Kupp receptions: 8.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"lalead\",\"section\":\"Yes or No\",\"q\":\"Will Los Angeles have the lead at halftime\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"cheetos\",\"section\":\"Commercials\",\"q\":\"Cheetos commercial before Pringles commercial\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"capmor\",\"section\":\"Commercials\",\"q\":\"Captain Morgan commercial before BMW commercial\",\"a1\":\"Yes\",\"a2\":\"No\"}]");
+    module.exports = JSON.parse("[{\"id\":\"anthem\",\"section\":\"Time\",\"q\":\"1:35.50 min:sec.ms National Anthem length Mickey Guyton\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"int\",\"section\":\"Game Stats\",\"q\":\"Interceptions: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"fum\",\"section\":\"Game Stats\",\"q\":\"Fumbles lost: 1.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"kuppreceptions\",\"section\":\"Player Stats\",\"q\":\"Cooper Kupp receptions: 8.5\",\"a1\":\"Over\",\"a2\":\"Under\"},{\"id\":\"lalead\",\"section\":\"Yes or No\",\"q\":\"Will Los Angeles have the lead at halftime\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"cheetos\",\"section\":\"Commercials\",\"q\":\"Cheetos commercial before Pringles commercial\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"capmor\",\"section\":\"Commercials\",\"q\":\"Captain Morgan commercial before BMW commercial\",\"a1\":\"Yes\",\"a2\":\"No\"},{\"id\":\"gatorade\",\"section\":\"Gatorade\",\"q\":\"Color of Gatorade dumped on winning coach\",\"a1\":\"\",\"a2\":\"\"},{\"id\":\"mvp\",\"section\":\"MVP\",\"q\":\"Who is the Superbowl MVP\",\"a1\":\"\",\"a2\":\"\"},{\"id\":\"finalscore\",\"section\":\"Final Score\",\"q\":\"What is the final score of the game\",\"a1\":\"\",\"a2\":\"\"}]");
     /***/
   },
 
@@ -2303,7 +2303,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".header-line {\n  border: none;\n  height: 1px;\n  color: #333;\n  background-color: #333;\n}\n\n.line {\n  display: block;\n  position: relative;\n  padding: 0;\n  margin: 8px auto;\n  height: 0;\n  width: 100%;\n  max-height: 0;\n  font-size: 1px;\n  line-height: 0;\n  clear: both;\n  border: none;\n  border-top: 1px solid #aaaaaa;\n  border-bottom: 1px solid #ffffff;\n}\n\n.even-row {\n  background-color: #e6e6e6;\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\n.odd-row {\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\nbutton {\n  margin: 5px;\n}\n\nmat-radio-button {\n  margin: 3px;\n}\n\n.backdropBackground {\n  background-color: #bbbbbbf2;\n  -webkit-backdrop-filter: blur(4px);\n          backdrop-filter: blur(4px);\n}\n\n.section-header {\n  background-color: #7b1fa2 !important;\n  color: white;\n  height: 50px;\n  font-size: x-large;\n  line-height: 50px;\n}\n\n::ng-deep .mat-radio-outer-circle {\n  border-color: #424242 !important;\n}\n\n::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .cdk-overlay-container {\n  -webkit-backdrop-filter: blur(2px) !important;\n          backdrop-filter: blur(2px) !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9ybS1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGZvcm0tcGFnZVxcZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb3JtLXBhZ2UvZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7QUNDRjs7QURDQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSw2QkFBQTtFQUNBLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLDJCQUFBO0VBQ0Esa0NBQUE7VUFBQSwwQkFBQTtBQ0VGOztBRENBO0VBQ0Usb0NBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNFRjs7QURDQTtFQUNFLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSxvQ0FBQTtBQ0VGOztBRENBO0VBQ0UsNkNBQUE7VUFBQSxxQ0FBQTtBQ0VGIiwiZmlsZSI6InNyYy9hcHAvZm9ybS1wYWdlL2Zvcm0tcGFnZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5oZWFkZXItbGluZSB7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGhlaWdodDogMXB4O1xyXG4gIGNvbG9yOiAjMzMzO1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XHJcbn1cclxuLmxpbmUge1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICBwYWRkaW5nOiAwO1xyXG4gIG1hcmdpbjogOHB4IGF1dG87XHJcbiAgaGVpZ2h0OiAwO1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIG1heC1oZWlnaHQ6IDA7XHJcbiAgZm9udC1zaXplOiAxcHg7XHJcbiAgbGluZS1oZWlnaHQ6IDA7XHJcbiAgY2xlYXI6IGJvdGg7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCAjYWFhYWFhO1xyXG4gIGJvcmRlci1ib3R0b206IDFweCBzb2xpZCAjZmZmZmZmO1xyXG59XHJcblxyXG4uZXZlbi1yb3cge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICNlNmU2ZTY7XHJcbiAgcGFkZGluZy10b3A6IDVweDtcclxuICBwYWRkaW5nLWJvdHRvbTogMXB4O1xyXG4gIGJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XHJcbiAgYm9yZGVyLWNvbG9yOiBibGFjaztcclxufVxyXG5cclxuLm9kZC1yb3cge1xyXG4gIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgcGFkZGluZy1ib3R0b206IDFweDtcclxuICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gIGJvcmRlci13aWR0aDogMXB4O1xyXG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbmJ1dHRvbiB7XHJcbiAgbWFyZ2luOiA1cHg7XHJcbn1cclxuXHJcbm1hdC1yYWRpby1idXR0b24ge1xyXG4gIG1hcmdpbjogM3B4O1xyXG59XHJcblxyXG4uYmFja2Ryb3BCYWNrZ3JvdW5kIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmJiYmJiZjI7XHJcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDRweCk7XHJcbn1cclxuXHJcbi5zZWN0aW9uLWhlYWRlciB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBoZWlnaHQ6IDUwcHg7XHJcbiAgZm9udC1zaXplOiB4LWxhcmdlO1xyXG4gIGxpbmUtaGVpZ2h0OiA1MHB4O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLm1hdC1yYWRpby1vdXRlci1jaXJjbGUge1xyXG4gIGJvcmRlci1jb2xvcjogIzQyNDI0MiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLm1hdC1yYWRpby1idXR0b24ubWF0LWFjY2VudCAubWF0LXJhZGlvLWlubmVyLWNpcmNsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xyXG59XHJcblxyXG46Om5nLWRlZXAgLmNkay1vdmVybGF5LWNvbnRhaW5lciB7XHJcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDJweCkgIWltcG9ydGFudDtcclxufVxyXG4iLCIuaGVhZGVyLWxpbmUge1xuICBib3JkZXI6IG5vbmU7XG4gIGhlaWdodDogMXB4O1xuICBjb2xvcjogIzMzMztcbiAgYmFja2dyb3VuZC1jb2xvcjogIzMzMztcbn1cblxuLmxpbmUge1xuICBkaXNwbGF5OiBibG9jaztcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBwYWRkaW5nOiAwO1xuICBtYXJnaW46IDhweCBhdXRvO1xuICBoZWlnaHQ6IDA7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXgtaGVpZ2h0OiAwO1xuICBmb250LXNpemU6IDFweDtcbiAgbGluZS1oZWlnaHQ6IDA7XG4gIGNsZWFyOiBib3RoO1xuICBib3JkZXI6IG5vbmU7XG4gIGJvcmRlci10b3A6IDFweCBzb2xpZCAjYWFhYWFhO1xuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2ZmZmZmZjtcbn1cblxuLmV2ZW4tcm93IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2U2ZTZlNjtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDFweDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbi5vZGQtcm93IHtcbiAgcGFkZGluZy10b3A6IDVweDtcbiAgcGFkZGluZy1ib3R0b206IDFweDtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgYm9yZGVyLXdpZHRoOiAxcHg7XG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XG59XG5cbmJ1dHRvbiB7XG4gIG1hcmdpbjogNXB4O1xufVxuXG5tYXQtcmFkaW8tYnV0dG9uIHtcbiAgbWFyZ2luOiAzcHg7XG59XG5cbi5iYWNrZHJvcEJhY2tncm91bmQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYmJiYmJiZjI7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xufVxuXG4uc2VjdGlvbi1oZWFkZXIge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgaGVpZ2h0OiA1MHB4O1xuICBmb250LXNpemU6IHgtbGFyZ2U7XG4gIGxpbmUtaGVpZ2h0OiA1MHB4O1xufVxuXG46Om5nLWRlZXAgLm1hdC1yYWRpby1vdXRlci1jaXJjbGUge1xuICBib3JkZXItY29sb3I6ICM0MjQyNDIgIWltcG9ydGFudDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tYnV0dG9uLm1hdC1hY2NlbnQgLm1hdC1yYWRpby1pbm5lci1jaXJjbGUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjN2IxZmEyICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcCAuY2RrLW92ZXJsYXktY29udGFpbmVyIHtcbiAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDJweCkgIWltcG9ydGFudDtcbn0iXX0= */";
+    __webpack_exports__["default"] = ".header-line {\n  border: none;\n  height: 1px;\n  color: #333;\n  background-color: #333;\n}\n\n.line {\n  display: block;\n  position: relative;\n  padding: 0;\n  margin: 8px auto;\n  height: 0;\n  width: 100%;\n  max-height: 0;\n  font-size: 1px;\n  line-height: 0;\n  clear: both;\n  border: none;\n  border-top: 1px solid #aaaaaa;\n  border-bottom: 1px solid #ffffff;\n}\n\n.even-row {\n  background-color: #e6e6e6;\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\n.odd-row {\n  padding-top: 5px;\n  padding-bottom: 1px;\n  border-style: solid;\n  border-width: 1px;\n  border-color: black;\n}\n\nbutton {\n  margin: 5px;\n}\n\nmat-radio-button {\n  margin: 3px;\n}\n\n.backdropBackground {\n  background-color: #bbbbbbf2;\n  -webkit-backdrop-filter: blur(4px);\n          backdrop-filter: blur(4px);\n}\n\n.section-header {\n  background-color: #7b1fa2 !important;\n  color: white;\n  height: 50px;\n  font-size: x-large;\n  line-height: 50px;\n}\n\n::ng-deep .mat-radio-outer-circle {\n  border-color: #424242 !important;\n}\n\n::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {\n  background-color: #7b1fa2 !important;\n}\n\n::ng-deep .cdk-overlay-container {\n  -webkit-backdrop-filter: blur(2px) !important;\n          backdrop-filter: blur(2px) !important;\n}\n\n#gatorade {\n  background-color: #a79faa !important;\n}\n\n#bengals {\n  background-color: #a79faa !important;\n}\n\n#rams {\n  background-color: #a79faa !important;\n}\n\n#mvp {\n  background-color: #a79faa !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZm9ybS1wYWdlL0M6XFxQcm9qZWN0c1xcYW5ndWxhciBub2RlanMgbW9uZ29kYlxcTUVBTi1Qcm9wLUJldHMvc3JjXFxhcHBcXGZvcm0tcGFnZVxcZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIiwic3JjL2FwcC9mb3JtLXBhZ2UvZm9ybS1wYWdlLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsWUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0Esc0JBQUE7QUNDRjs7QURDQTtFQUNFLGNBQUE7RUFDQSxrQkFBQTtFQUNBLFVBQUE7RUFDQSxnQkFBQTtFQUNBLFNBQUE7RUFDQSxXQUFBO0VBQ0EsYUFBQTtFQUNBLGNBQUE7RUFDQSxjQUFBO0VBQ0EsV0FBQTtFQUNBLFlBQUE7RUFDQSw2QkFBQTtFQUNBLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSx5QkFBQTtFQUNBLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0VBQ0EsbUJBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLFdBQUE7QUNFRjs7QURDQTtFQUNFLDJCQUFBO0VBQ0Esa0NBQUE7VUFBQSwwQkFBQTtBQ0VGOztBRENBO0VBQ0Usb0NBQUE7RUFDQSxZQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7QUNFRjs7QURDQTtFQUNFLGdDQUFBO0FDRUY7O0FEQ0E7RUFDRSxvQ0FBQTtBQ0VGOztBRENBO0VBQ0UsNkNBQUE7VUFBQSxxQ0FBQTtBQ0VGOztBRENBO0VBQ0Usb0NBQUE7QUNFRjs7QURDQTtFQUNFLG9DQUFBO0FDRUY7O0FEQ0E7RUFDRSxvQ0FBQTtBQ0VGOztBRENBO0VBQ0Usb0NBQUE7QUNFRiIsImZpbGUiOiJzcmMvYXBwL2Zvcm0tcGFnZS9mb3JtLXBhZ2UuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaGVhZGVyLWxpbmUge1xyXG4gIGJvcmRlcjogbm9uZTtcclxuICBoZWlnaHQ6IDFweDtcclxuICBjb2xvcjogIzMzMztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMzMzO1xyXG59XHJcbi5saW5lIHtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgcGFkZGluZzogMDtcclxuICBtYXJnaW46IDhweCBhdXRvO1xyXG4gIGhlaWdodDogMDtcclxuICB3aWR0aDogMTAwJTtcclxuICBtYXgtaGVpZ2h0OiAwO1xyXG4gIGZvbnQtc2l6ZTogMXB4O1xyXG4gIGxpbmUtaGVpZ2h0OiAwO1xyXG4gIGNsZWFyOiBib3RoO1xyXG4gIGJvcmRlcjogbm9uZTtcclxuICBib3JkZXItdG9wOiAxcHggc29saWQgI2FhYWFhYTtcclxuICBib3JkZXItYm90dG9tOiAxcHggc29saWQgI2ZmZmZmZjtcclxufVxyXG5cclxuLmV2ZW4tcm93IHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZTZlNmU2O1xyXG4gIHBhZGRpbmctdG9wOiA1cHg7XHJcbiAgcGFkZGluZy1ib3R0b206IDFweDtcclxuICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gIGJvcmRlci13aWR0aDogMXB4O1xyXG4gIGJvcmRlci1jb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbi5vZGQtcm93IHtcclxuICBwYWRkaW5nLXRvcDogNXB4O1xyXG4gIHBhZGRpbmctYm90dG9tOiAxcHg7XHJcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICBib3JkZXItd2lkdGg6IDFweDtcclxuICBib3JkZXItY29sb3I6IGJsYWNrO1xyXG59XHJcblxyXG5idXR0b24ge1xyXG4gIG1hcmdpbjogNXB4O1xyXG59XHJcblxyXG5tYXQtcmFkaW8tYnV0dG9uIHtcclxuICBtYXJnaW46IDNweDtcclxufVxyXG5cclxuLmJhY2tkcm9wQmFja2dyb3VuZCB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2JiYmJiYmYyO1xyXG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cig0cHgpO1xyXG59XHJcblxyXG4uc2VjdGlvbi1oZWFkZXIge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcclxuICBjb2xvcjogd2hpdGU7XHJcbiAgaGVpZ2h0OiA1MHB4O1xyXG4gIGZvbnQtc2l6ZTogeC1sYXJnZTtcclxuICBsaW5lLWhlaWdodDogNTBweDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tb3V0ZXItY2lyY2xlIHtcclxuICBib3JkZXItY29sb3I6ICM0MjQyNDIgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tYnV0dG9uLm1hdC1hY2NlbnQgLm1hdC1yYWRpby1pbm5lci1jaXJjbGUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICM3YjFmYTIgIWltcG9ydGFudDtcclxufVxyXG5cclxuOjpuZy1kZWVwIC5jZGstb3ZlcmxheS1jb250YWluZXIge1xyXG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cigycHgpICFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbiNnYXRvcmFkZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2E3OWZhYSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4jYmVuZ2FscyB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2E3OWZhYSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4jcmFtcyB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2E3OWZhYSAhaW1wb3J0YW50O1xyXG59XHJcblxyXG4jbXZwIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYTc5ZmFhICFpbXBvcnRhbnQ7XHJcbn1cclxuIiwiLmhlYWRlci1saW5lIHtcbiAgYm9yZGVyOiBub25lO1xuICBoZWlnaHQ6IDFweDtcbiAgY29sb3I6ICMzMzM7XG4gIGJhY2tncm91bmQtY29sb3I6ICMzMzM7XG59XG5cbi5saW5lIHtcbiAgZGlzcGxheTogYmxvY2s7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgcGFkZGluZzogMDtcbiAgbWFyZ2luOiA4cHggYXV0bztcbiAgaGVpZ2h0OiAwO1xuICB3aWR0aDogMTAwJTtcbiAgbWF4LWhlaWdodDogMDtcbiAgZm9udC1zaXplOiAxcHg7XG4gIGxpbmUtaGVpZ2h0OiAwO1xuICBjbGVhcjogYm90aDtcbiAgYm9yZGVyOiBub25lO1xuICBib3JkZXItdG9wOiAxcHggc29saWQgI2FhYWFhYTtcbiAgYm9yZGVyLWJvdHRvbTogMXB4IHNvbGlkICNmZmZmZmY7XG59XG5cbi5ldmVuLXJvdyB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNlNmU2ZTY7XG4gIHBhZGRpbmctdG9wOiA1cHg7XG4gIHBhZGRpbmctYm90dG9tOiAxcHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMXB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG4ub2RkLXJvdyB7XG4gIHBhZGRpbmctdG9wOiA1cHg7XG4gIHBhZGRpbmctYm90dG9tOiAxcHg7XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG4gIGJvcmRlci13aWR0aDogMXB4O1xuICBib3JkZXItY29sb3I6IGJsYWNrO1xufVxuXG5idXR0b24ge1xuICBtYXJnaW46IDVweDtcbn1cblxubWF0LXJhZGlvLWJ1dHRvbiB7XG4gIG1hcmdpbjogM3B4O1xufVxuXG4uYmFja2Ryb3BCYWNrZ3JvdW5kIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2JiYmJiYmYyO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbn1cblxuLnNlY3Rpb24taGVhZGVyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xuICBjb2xvcjogd2hpdGU7XG4gIGhlaWdodDogNTBweDtcbiAgZm9udC1zaXplOiB4LWxhcmdlO1xuICBsaW5lLWhlaWdodDogNTBweDtcbn1cblxuOjpuZy1kZWVwIC5tYXQtcmFkaW8tb3V0ZXItY2lyY2xlIHtcbiAgYm9yZGVyLWNvbG9yOiAjNDI0MjQyICFpbXBvcnRhbnQ7XG59XG5cbjo6bmctZGVlcCAubWF0LXJhZGlvLWJ1dHRvbi5tYXQtYWNjZW50IC5tYXQtcmFkaW8taW5uZXItY2lyY2xlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzdiMWZhMiAhaW1wb3J0YW50O1xufVxuXG46Om5nLWRlZXAgLmNkay1vdmVybGF5LWNvbnRhaW5lciB7XG4gIGJhY2tkcm9wLWZpbHRlcjogYmx1cigycHgpICFpbXBvcnRhbnQ7XG59XG5cbiNnYXRvcmFkZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNhNzlmYWEgIWltcG9ydGFudDtcbn1cblxuI2JlbmdhbHMge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjYTc5ZmFhICFpbXBvcnRhbnQ7XG59XG5cbiNyYW1zIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2E3OWZhYSAhaW1wb3J0YW50O1xufVxuXG4jbXZwIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI2E3OWZhYSAhaW1wb3J0YW50O1xufSJdfQ== */";
     /***/
   },
 
@@ -2489,6 +2489,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.guesses.push(newBet);
           }
 
+          this.isDisabled = false;
+
           if (this.info.length == this.guesses.length || this.isAdmin) {
             this.isDisabled = false;
           }
@@ -2533,7 +2535,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   guess.playerId = _this7.playerId;
                   guess.groupId = _this7.groupId;
                   guess._id = null;
-                });
+                }); //this.addSpecial()
+
 
                 _this7.dataService.insertBet(_this7.guesses).subscribe(function (data) {
                   _this7.router.navigate(["/review"], {
@@ -2547,6 +2550,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 });
               });
             } else {
+              //this.addSpecial()
               this.guesses.forEach(function (guess) {
                 guess.playerId = _this7.playerId;
                 guess.groupId = _this7.groupId;
@@ -2564,6 +2568,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               });
             }
           }
+        }
+      }, {
+        key: "addSpecial",
+        value: function addSpecial() {
+          this.guesses.push({
+            playerId: this.playerId,
+            groupId: this.groupId,
+            _id: null,
+            question: 'finalscore',
+            questionText: 'What is the final score of the game',
+            answer: '',
+            eventId: this.eventId,
+            guess: document.getElementById("rams").value + '-' + document.getElementById("bengals").value
+          });
+          this.guesses.push({
+            playerId: this.playerId,
+            groupId: this.groupId,
+            _id: null,
+            question: 'mvp',
+            questionText: 'MVP',
+            answer: '',
+            eventId: this.eventId,
+            guess: document.getElementById("mvp").value
+          });
+          this.guesses.push({
+            playerId: this.playerId,
+            groupId: this.groupId,
+            _id: null,
+            question: 'gatorade',
+            questionText: 'Color of Gatorade dumped on winning coach',
+            answer: '',
+            eventId: this.eventId,
+            guess: document.getElementById("gatorade").value
+          });
         }
       }, {
         key: "openDialog",
@@ -3146,6 +3184,26 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
   },
 
   /***/
+  "./src/app/register-page/register.component.scss":
+  /*!*******************************************************!*\
+    !*** ./src/app/register-page/register.component.scss ***!
+    \*******************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppRegisterPageRegisterComponentScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "::ng-deep .mat-form-field-placeholder {\n  color: black;\n}\n\n::ng-deep .mat-focused .mat-form-field-placeholder {\n  color: black;\n}\n\n::ng-deep .mat-form-field-underline .mat-form-field-ripple {\n  background-color: black;\n}\n\n::ng-deep .mat-form-field-underline {\n  background-color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXItcGFnZS9DOlxcUHJvamVjdHNcXGFuZ3VsYXIgbm9kZWpzIG1vbmdvZGJcXE1FQU4tUHJvcC1CZXRzL3NyY1xcYXBwXFxyZWdpc3Rlci1wYWdlXFxyZWdpc3Rlci5jb21wb25lbnQuc2NzcyIsInNyYy9hcHAvcmVnaXN0ZXItcGFnZS9yZWdpc3Rlci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFlBQUE7QUNDRjs7QURFQTtFQUNFLFlBQUE7QUNDRjs7QURFQTtFQUNFLHVCQUFBO0FDQ0Y7O0FERUE7RUFDRSx1QkFBQTtBQ0NGIiwiZmlsZSI6InNyYy9hcHAvcmVnaXN0ZXItcGFnZS9yZWdpc3Rlci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIjo6bmctZGVlcCAubWF0LWZvcm0tZmllbGQtcGxhY2Vob2xkZXIge1xyXG4gIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9jdXNlZCAubWF0LWZvcm0tZmllbGQtcGxhY2Vob2xkZXIge1xyXG4gIGNvbG9yOiBibGFjaztcclxufVxyXG5cclxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC11bmRlcmxpbmUgLm1hdC1mb3JtLWZpZWxkLXJpcHBsZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XHJcbn1cclxuXHJcbjo6bmctZGVlcCAubWF0LWZvcm0tZmllbGQtdW5kZXJsaW5lIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxufVxyXG4iLCI6Om5nLWRlZXAgLm1hdC1mb3JtLWZpZWxkLXBsYWNlaG9sZGVyIHtcbiAgY29sb3I6IGJsYWNrO1xufVxuXG46Om5nLWRlZXAgLm1hdC1mb2N1c2VkIC5tYXQtZm9ybS1maWVsZC1wbGFjZWhvbGRlciB7XG4gIGNvbG9yOiBibGFjaztcbn1cblxuOjpuZy1kZWVwIC5tYXQtZm9ybS1maWVsZC11bmRlcmxpbmUgLm1hdC1mb3JtLWZpZWxkLXJpcHBsZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufVxuXG46Om5nLWRlZXAgLm1hdC1mb3JtLWZpZWxkLXVuZGVybGluZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IGJsYWNrO1xufSJdfQ== */";
+    /***/
+  },
+
+  /***/
   "./src/app/register-page/register.component.ts":
   /*!*****************************************************!*\
     !*** ./src/app/register-page/register.component.ts ***!
@@ -3179,29 +3237,60 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var query_string__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var query_string__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! query-string */
     "./node_modules/query-string/index.js");
     /* harmony import */
 
 
-    var query_string__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_2__);
+    var query_string__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(query_string__WEBPACK_IMPORTED_MODULE_4__);
 
     var RegisterComponent = /*#__PURE__*/function () {
-      function RegisterComponent() {
+      function RegisterComponent(formBuilder, router) {
         _classCallCheck(this, RegisterComponent);
+
+        this.formBuilder = formBuilder;
+        this.router = router;
       }
 
       _createClass(RegisterComponent, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.form = this.formBuilder.group({
+            email: [null, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            name: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]]
+          });
+        }
+      }, {
         key: "register",
         value: function register() {
-          var stringifiedParams = query_string__WEBPACK_IMPORTED_MODULE_2__["stringify"]({
+          window.localStorage.setItem("un", this.form.value.name);
+          window.localStorage.setItem("um", this.form.value.email);
+          this.router.navigate(['entries']);
+        }
+      }, {
+        key: "googleRegister",
+        value: function googleRegister() {
+          var stringifiedParams = query_string__WEBPACK_IMPORTED_MODULE_4__["stringify"]({
             client_id: '1011221667530-6e7kha8c8mrbtjetti1jr7fkghrcaarc.apps.googleusercontent.com',
-            redirect_uri: 'http://localhost:8080/entries',
+            redirect_uri: 'https://vast-badlands-87144.herokuapp.com/entries',
             scope: ['https://www.googleapis.com/auth/userinfo.email', 'https://www.googleapis.com/auth/userinfo.profile'].join(' '),
             response_type: 'code',
             access_type: 'offline',
-            prompt: 'consent'
+            prompt: 'consent',
+            disallow_webview: true
           });
           this.googleLoginUrl = "https://accounts.google.com/o/oauth2/v2/auth?".concat(stringifiedParams);
           window.location.href = this.googleLoginUrl;
@@ -3211,10 +3300,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       return RegisterComponent;
     }();
 
+    RegisterComponent.ctorParameters = function () {
+      return [{
+        type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }];
+    };
+
     RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! raw-loader!./register.component.html */
-      "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html"))["default"]
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/register-page/register.component.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./register.component.scss */
+      "./src/app/register-page/register.component.scss"))["default"]]
     })], RegisterComponent);
     /***/
   },

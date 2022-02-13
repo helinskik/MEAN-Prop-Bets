@@ -5,10 +5,10 @@
 <div *ngIf="!showLoading">
     <h3 *ngIf="isLive" class="d-flex justify-content-center mat-display-1" style="margin: 15px 0 5px;">EVENT IS LIVE</h3>
     <h3 *ngIf="!isLive" class="d-flex justify-content-center" style="margin: 15px 0 5px;">Betting open for</h3>
-    <h2 class="d-flex justify-content-center mat-display-2" style="margin: 5px 0 25px;">{{event?.name}}</h2>
+    <h2 class="d-flex justify-content-center mat-display-2" style="margin: 5px 0 55px;">{{event?.name}}</h2>
     <p class="d-flex justify-content-center">Select a group to see all of the submitted entries</p>
     <form class="form-horizontal d-flex justify-content-center" [formGroup]="form">
-        <mat-form-field style="background-color: #7b1fa2 !important;">
+        <mat-form-field style="background-color: #a79faa !important;">
             <mat-label>Group</mat-label>
             <mat-select style="text-align: center;" [(ngModel)]="selectedValue" name="game" id="game" #game formControlName="game" (selectionChange)="selected($event)"> 
                 <mat-option *ngFor="let game of games" [value]="game">
@@ -18,7 +18,7 @@
         </mat-form-field>
     </form>
 
-    <div class="row d-flex justify-content-center" style="margin-top: 30px;">
+    <div class="d-flex justify-content-center" style="margin-top: 30px;">
         <p>{{this.numBets}}</p>
     </div>
     

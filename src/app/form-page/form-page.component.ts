@@ -122,7 +122,7 @@ export class FormPageComponent {
       };
       this.guesses.push(newBet);
     }
-
+    this.isDisabled = false;
     if (this.info.length == this.guesses.length || this.isAdmin) {
       this.isDisabled = false;
     }
@@ -164,6 +164,7 @@ export class FormPageComponent {
             guess.groupId = this.groupId
             guess._id = null
           });
+          //this.addSpecial()
           this.dataService.insertBet(this.guesses).subscribe((data) => {
             this.router.navigate(["/review"], {
               queryParams: {
@@ -176,11 +177,13 @@ export class FormPageComponent {
           });
         });
       } else {
+        //this.addSpecial()
         this.guesses.forEach((guess) => {
           guess.playerId = this.playerId
           guess.groupId = this.groupId
           guess._id = null
         });
+        
         this.dataService.insertBet(this.guesses).subscribe((data) => {
           this.router.navigate(["/review"], {
             queryParams: {
@@ -193,6 +196,39 @@ export class FormPageComponent {
         });
       }
     }
+  }
+
+  addSpecial() {
+    this.guesses.push( {
+      playerId: this.playerId,
+      groupId: this.groupId,
+      _id: null,
+      question: 'finalscore',
+      questionText: 'What is the final score of the game',
+      answer: '',
+      eventId: this.eventId,
+      guess: (<HTMLInputElement>document.getElementById("rams")).value + '-' + (<HTMLInputElement>document.getElementById("bengals")).value
+    })
+    this.guesses.push( {
+      playerId: this.playerId,
+      groupId: this.groupId,
+      _id: null,
+      question: 'mvp',
+      questionText: 'MVP',
+      answer: '',
+      eventId: this.eventId,
+      guess: (<HTMLInputElement>document.getElementById("mvp")).value
+    })
+    this.guesses.push( {
+      playerId: this.playerId,
+      groupId: this.groupId,
+      _id: null,
+      question: 'gatorade',
+      questionText: 'Color of Gatorade dumped on winning coach',
+      answer: '',
+      eventId: this.eventId,
+      guess: (<HTMLInputElement>document.getElementById("gatorade")).value
+    })
   }
 
   openDialog() {

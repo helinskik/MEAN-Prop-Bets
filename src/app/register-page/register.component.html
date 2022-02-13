@@ -8,20 +8,51 @@
   <h3 class="d-flex justify-content-center" style="margin-bottom: -2px">
     Current Event:
   </h3>
-  <h3 class="d-flex justify-content-center mat-display-2">Superbowl LVI</h3>
-  <div class="justify-content-center" style="padding: 20px; text-align: center">
+  <h3 class="d-flex justify-content-center mat-display-2" style="margin-bottom: 10px;">Superbowl LVI</h3>
+  <form class="form-horizontal" [formGroup]="form" (submit)="register()">
+    <div
+      class="justify-content-center"
+      style="padding: 20px; text-align: center"
+    >
+      <h2 mat-dialog-title style="padding-top: 25px">Enter your Email:</h2>
+      <mat-form-field style="background-color: #a79faa;">
+        <input
+          matInput
+          placeholder="Email"
+          formControlName="email"
+          formControlName="email"
+          autocomplete="off"
+          type="email"
+        />
+      </mat-form-field>
+
+      <h2 mat-dialog-title style="padding-top: 25px">Enter your Name:</h2>
+      <mat-form-field style="background-color: #a79faa;">
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          formControlName="name"
+          autocomplete="off"
+        />
+      </mat-form-field>
+      <mat-dialog-actions class="d-flex justify-content-center" style="margin-top: 20px;margin-bottom: 50px;">
+        <button type="submit" mat-raised-button color="primary">
+          Register
+        </button>
+      </mat-dialog-actions>
     <p mat-display-1="">
-      Click the button below to login or create an account using a valid Google
+      Or click the button below to login or create an account using a valid Google
       email.
     </p>
-    <button
+      <button
       class="btn btn-default mat-raised-button mat-button-base mat-primary"
       color="primary"
       mat-raised-button=""
       ng-reflect-color="primary"
-      (click)="register()"
+      (click)="googleRegister()"
     >
-      <span class="mat-button-wrapper">Register!</span>
+      <span class="mat-button-wrapper">Register with Google</span>
       <div
         class="mat-button-ripple mat-ripple"
         matripple=""
@@ -31,5 +62,6 @@
       ></div>
       <div class="mat-button-focus-overlay"></div>
     </button>
-  </div>
+    </div>
+  </form>
 </div>

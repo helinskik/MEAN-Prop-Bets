@@ -47,6 +47,27 @@
         "q": "Captain Morgan commercial before BMW commercial",
         "a1": "Yes",
         "a2": "No"
+      },
+      {
+        "id": "gatorade",
+        "section": "Gatorade",
+        "q": "Color of Gatorade dumped on winning coach",
+        "a1": "",
+        "a2": ""
+      },
+      {
+        "id": "mvp",
+        "section": "MVP",
+        "q": "Who is the Superbowl MVP",
+        "a1": "",
+        "a2": ""
+      },
+      {
+        "id": "finalscore",
+        "section": "Final Score",
+        "q": "What is the final score of the game",
+        "a1": "",
+        "a2": ""
       }
       
     ]

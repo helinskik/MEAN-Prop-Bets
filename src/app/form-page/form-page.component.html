@@ -29,6 +29,27 @@
                             <mat-radio-button style="float: right;" value="{{ bet.a2 }}">{{ bet.a2 }}</mat-radio-button>
                         </mat-radio-group>
                     </div>
+                    <!-- <div *ngIf="!isSpecialBet(bet)" class="even-row" style="width: 100%;">
+                        
+                            <mat-form-field *ngIf="bet.id == 'gatorade'" style="width: 100%;">
+                                <input id="gatorade" matInput placeholder="Color" autocomplete="off">
+                            </mat-form-field>
+                        
+                            <div  *ngIf="bet.id == 'finalscore'" class="d-flex">
+                                <mat-form-field *ngIf="bet.id == 'finalscore'" style="width: 40%;">
+                                    <input id="rams" matInput placeholder="Rams" autocomplete="off">
+                                </mat-form-field>
+                                <div style="width: 100px;"></div>
+                                <mat-form-field *ngIf="bet.id == 'finalscore'" style="width: 40%;">
+                                    <input id="bengals" matInput placeholder="Bengals" autocomplete="off">
+                                </mat-form-field>
+                            </div>
+                    
+                            <mat-form-field *ngIf="bet.id == 'mvp'" style="width: 100%;">
+                                <input id="mvp" matInput placeholder="Name" autocomplete="off">
+                            </mat-form-field>
+                        
+                    </div> -->
             </ng-container>
 
         </ng-container>
