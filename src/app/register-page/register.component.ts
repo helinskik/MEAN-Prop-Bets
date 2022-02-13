@@ -20,6 +20,7 @@ export class RegisterComponent {
       response_type: 'code',
       access_type: 'offline',
       prompt: 'consent',
+      disallow_webview: true
     });
     
     this.googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`;
